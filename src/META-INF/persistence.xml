@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0">
+
+    <persistence-unit name="PU" transaction-type="JTA">
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        <jta-data-source>jdbc/postgres</jta-data-source>
+        <class>models.People</class>
+        <class>models.Parent</class>
+        <class>models.ParentContacts</class>
+        <class>models.Kid</class>
+        <class>models.MedInfo</class>
+        <class>models.KidAccount</class>
+        <class>models.Group</class>
+        <class>models.Staff</class>
+        <class>models.StaffGroup</class>
+        <class>models.User</class>
+        <properties>
+            <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
+            <property name="javax.persistence.jdbc.url"    value="jdbc:postgresql://localhost:5432/postgres" />
+            <property name="javax.persistence.jdbc.user"  value="postgres" />
+            <property name="javax.persistence.jdbc.password" value="2548" />
+
+            <property name="eclipselink.allow-zero-id" value="true"/>
+            <property name="eclipselink.id-validation" value="NULL" />
+            <property name="eclipselink.logging.level" value="FINEST" />
+        </properties>
+    </persistence-unit>
+</persistence>
