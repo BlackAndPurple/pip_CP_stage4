@@ -12,14 +12,14 @@ public interface IPeopleBean {
 
    // public People add(People person);
 
-    public People get(long id);
+    People get(long id);
 
-    public boolean update(long id, String name, String middleName, String surname, boolean sex, Date dateOfBirth);
+    boolean update(long id, String name, String middleName, String surname, boolean sex, Date dateOfBirth);
 
-    public boolean delete(long id);
+    boolean delete(long id);
 
-    public List<People> getAll();
+    List<People> getAll();
 
-    public void add(String name, String middleName, String surname, boolean sex, Date dateOfBirth);
+    void add(String name, String middleName, String surname, boolean sex, Date dateOfBirth);
 
 }
