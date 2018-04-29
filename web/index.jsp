@@ -11,6 +11,9 @@
     <title>$Title$</title>
   </head>
   <body>
-  $END$
+  <%
+    String redirectURL = "./authorization";
+    response.sendRedirect(redirectURL);
+  %>
   </body>
 </html>

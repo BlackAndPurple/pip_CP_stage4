@@ -10,7 +10,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>login jsp</servlet-name>
-        <url-pattern>/</url-pattern>
+        <url-pattern>/authorization</url-pattern>
     </servlet-mapping>
 <!--controllers-->
     

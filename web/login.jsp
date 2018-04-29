@@ -11,6 +11,8 @@
     <title>Title</title>
 </head>
 <body>
-
+    <my-app>Загрузка...</my-app>
+    <script src="public/polyfills.js"></script>
+    <script src="public/app.js"></script>
 </body>
 </html>
