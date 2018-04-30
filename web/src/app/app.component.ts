@@ -38,6 +38,7 @@ export class AppComponent {
        // console.log(form);
 
         this.authService.login(form.value.username, form.value.password)
+            .subscribe(x => {this.result = x; alert(x);})
             /*.subscribe(
                 (   data: boolean) => {this.result=data; this.done=true;},
                     error => console.log(error)
