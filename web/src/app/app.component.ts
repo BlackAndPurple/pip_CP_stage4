@@ -27,7 +27,8 @@ export class User{
                     </div>
                 </form>
                 <div>Имя: {{signInForm.value.username}}</div>
-                <div>Email: {{signInForm.value.password}}</div>`,
+                <div>Email: {{signInForm.value.password}}</div>
+                <!--router-outlet></router-outlet-->`,
     providers: [AuthenticationService]
 })
 export class AppComponent {
@@ -38,7 +39,7 @@ export class AppComponent {
        // console.log(form);
 
         this.authService.login(form.value.username, form.value.password)
-            .subscribe(x => {this.result = x; alert(x);})
+            .subscribe(x => {this.result = x; alert(this.result);})
             /*.subscribe(
                 (   data: boolean) => {this.result=data; this.done=true;},
                     error => console.log(error)
