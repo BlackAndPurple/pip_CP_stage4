@@ -8,7 +8,7 @@ module.exports = {
     },
     output:{
         path: path.resolve(__dirname, './web/public'),     // путь к каталогу выходных файлов - папка public
-        publicPath: '/public/',
+        //publicPath: '/public/',
         filename: "[name].js"       // название создаваемого файла
     },
     devServer: {
