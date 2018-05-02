@@ -1,0 +1,51 @@
+
+<div class=" overlay">
+    <form #signInForm="ngForm" novalidate>
+        <div class="con">
+            <header class="head-form">
+                <h2>Log In</h2>
+                <p>login here using your username and password</p>
+            </header>
+            <br>
+            <div class="field-set">
+
+                <!--span class="input-item">
+                    <i class="fa fa-user-circle"></i>
+                </span-->
+                <input class="form-input form-control" id="txt-input" type="text" placeholder="UserName"  name="username" [(ngModel)]="username" required>
+                <br>
+
+                <!--span class="input-item">
+                    <i class="fa fa-key"></i>
+                </span-->
+                <input class="form-input form-control" type="password" placeholder="Password" id="pwd"  name="password" [(ngModel)]="password"  required>
+
+                <!--span>
+                    <i class="fa fa-eye" aria-hidden="true"  type="button" id="eye"></i>
+                </span-->
+
+
+                <br>
+                <!--        buttons -->
+                <!--      button LogIn -->
+                <button class="log-in" (click)="submit(signInForm)"> Log In </button>
+            </div>
+
+            <!--   other buttons -->
+            <div class="other">
+                <!--      Forgot Password button-->
+                <button class="btn submits frgt-pass">Forgot Password</button>
+                <!--     Sign Up button -->
+                <button class="btn submits sign-up" (click)="signUpClick();">Sign Up
+                    <!--         Sign Up font icon -->
+                    <i class="fa fa-user-plus" aria-hidden="true"></i>
+                </button>
+                <!--      End Other the Division -->
+            </div>
+
+            <!--   End Conrainer  -->
+        </div>
+
+        <!-- End Form -->
+    </form>
+</div>

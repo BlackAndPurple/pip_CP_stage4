@@ -12,14 +12,17 @@ import {Routes, RouterModule} from '@angular/router';
 //определение маршрутов
 const appRoutes: Routes =[
     { path: '', component: SignInComponent},
-    { path: 'signin', component: SignInComponent},
-    { path: 'register', component: RegisterComponent},
-    { path: '**', component: RegisterComponent }
+    //{ path: 'signin', component: SignInComponent},
+    //{ path: 'register', component: RegisterComponent},
+    //{ path: '**', component: RegisterComponent }
 ];
 
+const loginRoutes : Routes = [
+    {path: "register", component: RegisterComponent}
+];
 
 @NgModule({
-    imports:      [ BrowserModule, FormsModule, HttpClientModule, HttpModule, RouterModule.forRoot(appRoutes) ],
+    imports:      [ BrowserModule, FormsModule, HttpClientModule, RouterModule.forRoot(appRoutes), RouterModule.forRoot(loginRoutes) ],
     declarations: [ AppComponent, RegisterComponent, SignInComponent  ],
     bootstrap:    [ AppComponent ]
 })
