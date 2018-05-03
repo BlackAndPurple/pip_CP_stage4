@@ -2,11 +2,13 @@ import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule }   from '@angular/forms';
 import { AppComponent }   from './app.component';
-import { SignInComponent} from "./signin.component";
+import { SignInComponent} from "./signin/signin.component";
 import { HttpClientModule }   from '@angular/common/http';
-import { HttpModule } from '@angular/http';
-import { RegisterComponent }   from './register.component';
+//import { HttpModule } from '@angular/http';
+import { RegisterComponent }   from './register/register.component';
 import {Routes, RouterModule} from '@angular/router';
+import {CalendarModule} from 'primeng/calendar';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 
 //определение маршрутов
@@ -22,7 +24,8 @@ const loginRoutes : Routes = [
 ];
 
 @NgModule({
-    imports:      [ BrowserModule, FormsModule, HttpClientModule, RouterModule.forRoot(appRoutes), RouterModule.forRoot(loginRoutes) ],
+    imports:      [ BrowserModule, FormsModule, HttpClientModule, RouterModule.forRoot(appRoutes),
+                    RouterModule.forRoot(loginRoutes), CalendarModule, BrowserAnimationsModule  ],
     declarations: [ AppComponent, RegisterComponent, SignInComponent  ],
     bootstrap:    [ AppComponent ]
 })

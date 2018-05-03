@@ -11,7 +11,7 @@
 <html>
   <head>
     <base href="./">
-    <title>Title</title>
+    <title>Sunny Kindergarten</title>
     <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
@@ -21,7 +21,9 @@
     <link rel="stylesheet" type="text/css" href="css/index.css">
   </head>
   <body>
-    <app>Loading...</app>
+    <app>
+
+    </app>
     <script src="public/polyfills.js"></script>
     <script src="public/app.js"></script>
   </body>

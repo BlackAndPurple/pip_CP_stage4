@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import {NgForm} from "@angular/forms";
-import {AuthenticationService} from "./_services/authentication.service";
+import {AuthenticationService} from "../_services/authentication.service";
 import { Router } from '@angular/router';
 
 @Component({
     selector: 'signin-form',
 
-    templateUrl: '../html/signin.component.html',
-    styleUrls: ['../../css/login.css'],
+    templateUrl: './signin.component.html',
+    styleUrls: ['../../../css/login.css'],
     providers: [AuthenticationService]
 })
 export class SignInComponent {

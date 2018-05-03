@@ -35,7 +35,7 @@ module.exports = {
                 loader: 'raw-loader'
             },{
                 test: /\.html$/,
-                include: path.resolve(__dirname,'./web/src/html'),
+                include: path.resolve(__dirname,'./web/src/app'),
                 loader: 'html-loader'
             }
         ]
