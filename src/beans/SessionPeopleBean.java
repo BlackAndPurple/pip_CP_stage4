@@ -4,6 +4,8 @@ import models.People;
 
 import javax.ejb.Stateless;
 import javax.persistence.*;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
 
@@ -37,15 +39,26 @@ public class SessionPeopleBean implements IPeopleBean{
     public People get(String name, String middleName, String surname, boolean sex, Date dateOfBirth){
         EntityManager em = emf.createEntityManager();
         People person = null;
+        LocalDate date = dateOfBirth.toInstant().atZone( ZoneId.of( "Europe/Moscow" ) ).toLocalDate();
         try{
-            person = (People)em.createQuery("select person from People person where person.name=\'" + name +
+            person = (People)em.createQuery("select person from People person where person.name = \'" + name +
                     "\' and person.middleName = \'" + middleName + "\' and person.surname = \'" +surname +
-                    "\' and person.sex =" + sex + " and person.date_of_birth = " + dateOfBirth).getSingleResult();
-        }catch (Exception e){ }
+                    "\' and person.sex = " + sex + " and person.date_of_birth = \'" + date +"\'").getSingleResult();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         finally {
             em.close();
         }
         return person;
+    }
+
+    public Long getId(People person){
+        try {
+            return person.getPerson_id();
+        }catch (NullPointerException e){
+            return null;
+        }
     }
 
     /**

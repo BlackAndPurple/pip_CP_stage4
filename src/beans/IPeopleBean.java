@@ -22,4 +22,8 @@ public interface IPeopleBean {
 
     void add(String name, String middleName, String surname, boolean sex, Date dateOfBirth);
 
+    Long getId(People person);
+
+    People get(String name, String middleName, String surname, boolean sex, Date dateOfBirth);
+
 }

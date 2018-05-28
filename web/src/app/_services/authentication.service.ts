@@ -19,12 +19,10 @@ export class AuthenticationService{
             })
         };
         const body = JSON.stringify({username: username, password: password});
-        let headers = new Headers({ 'Content-Type': 'application/json' });
+        //let headers = new Headers({ 'Content-Type': 'application/json' });
         return this.http.post('./login/user_exists', body, httpOptions).map(resp => {return resp.toString() == "true"});/*.subscribe(data => {
             console.log(data);
         })*/;
     }
-    getData(){
-        return this.http.get('user.json')
-    }
+
 }

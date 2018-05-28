@@ -7,7 +7,6 @@ import { HttpClientModule }   from '@angular/common/http';
 //import { HttpModule } from '@angular/http';
 import { RegisterComponent }   from './register/register.component';
 import {Routes, RouterModule} from '@angular/router';
-import {CalendarModule} from 'primeng/calendar';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 
@@ -25,7 +24,7 @@ const loginRoutes : Routes = [
 
 @NgModule({
     imports:      [ BrowserModule, FormsModule, HttpClientModule, RouterModule.forRoot(appRoutes),
-                    RouterModule.forRoot(loginRoutes), CalendarModule, BrowserAnimationsModule  ],
+                    RouterModule.forRoot(loginRoutes), BrowserAnimationsModule  ],
     declarations: [ AppComponent, RegisterComponent, SignInComponent  ],
     bootstrap:    [ AppComponent ]
 })
