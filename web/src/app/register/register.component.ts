@@ -19,14 +19,16 @@ export class Person{
     providers: [RegistrationService]
 })
 export class RegisterComponent {
-    constructor(private regService: RegistrationService){}
+    constructor(private regService: RegistrationService, private router: Router){}
     person: Person = new Person();
     id: number = 0;
 
     submit(person : Person){
         //alert("alert!");
         this.regService.getPersonId(person)
-            .subscribe(id_ => {this.id = id_; alert(id_);})
+            .subscribe(id_ => {this.id = id_; alert(id_);});
+        if (this.id != null)
+            this.router.navigateByUrl('/next');
     }
 
     // submit(form: NgForm){
@@ -36,4 +38,5 @@ export class RegisterComponent {
     // onSubmit(f: NgForm) {
     //     alert("alert!");
     // }
+
 }

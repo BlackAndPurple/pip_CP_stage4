@@ -16,6 +16,9 @@ public class User {
     @Column(name = "email")
     private String email;
 
+    @Column(name = "role")
+    private String role;
+
     @OneToOne
     @PrimaryKeyJoinColumn(name = "person_id", referencedColumnName = "person_id")
     private People person;
@@ -62,5 +65,13 @@ public class User {
 
     public void setPerson_id(long person_id) {
         this.person_id = person_id;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 }

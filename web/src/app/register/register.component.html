@@ -1,6 +1,6 @@
 
 <div class="overlay">
-    <form #checkPersonForm="ngForm" novalidate >
+    <form #checkPersonForm="ngForm" ngNativeValidate > <!--novalidate-->
         <div class="con">
             <header class="head-form">
                 <h2>Sign up</h2>
@@ -8,17 +8,17 @@
             </header>
             <br>
             <div class="field-set">
-                <input class="form-input form-control" id="txt-input" type="text" placeholder="Name"  name="name" [(ngModel)] = "person.name" required>
+                <input class="form-input form-control" id="txt-input" type="text" placeholder="Name*"  name="name" [(ngModel)] = "person.name" required>
                 <br>
                 <input class="form-input form-control" type="text" placeholder="Middle name"  name="middle_name" [(ngModel)] = "person.middle_name"  >
                 <br>
-                <input class="form-input form-control" type="text" placeholder="Surname"  name="surname" [(ngModel)] = "person.surname" required>
+                <input class="form-input form-control" type="text" placeholder="Surname*"  name="surname" [(ngModel)] = "person.surname" required>
                 <br>
 
                 <input type="radio" class="gender-radio" [(ngModel)] = "person.gender" name = "gender" value="male" >Male
                 <input type="radio" class="gender-radio" [(ngModel)] = "person.gender" name = "gender" value="female" >Female<br>
 
-                <label class="input-label" for="date_of_birth">Date of birth</label><br>
+                <label class="input-label" for="date_of_birth">Date of birth*</label><br>
                 <input class="form-input form-control" type="date"  id="date_of_birth"  name="date_of_birth" [(ngModel)] = "person.date_of_birth" required>
                 <br>
 
