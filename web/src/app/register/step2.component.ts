@@ -1,6 +1,6 @@
 import { Component} from '@angular/core';
 import {RegistrationService} from "../_services/registration.service";
-import {Subscription} from "rxjs/Subscription";
+import {Router} from "@angular/router";
 
 export class User{
     username: string;
@@ -19,24 +19,18 @@ export class User{
     providers: [RegistrationService]
 })
 export class Step2Component {
+
     personId: string = sessionStorage.getItem("personId");
     user: User = new User(this.personId);
 
-    constructor(private regService: RegistrationService){
+    constructor(private regService: RegistrationService, private router: Router){
     }
      submit(user : User){
 
-         alert(this.user.personId+" " + this.user.username);
+         this.regService.addUser(this.user);
+         alert("You've successfully registered! Sign in to continue... ");
+         this.router.navigateByUrl('/');
 
-    //     this.regService.getPersonId(person)
-    //         .subscribe(id_ => {this.id = id_; alert(id_);})
      }
 
-    // submit(form: NgForm){
-    //     alert("alert!");
-    // }
-
-    // onSubmit(f: NgForm) {
-    //     alert("alert!");
-    // }
 }
