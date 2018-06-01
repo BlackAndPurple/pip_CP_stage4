@@ -1,4 +1,4 @@
-import { Component} from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 import {RegistrationService} from "../_services/registration.service";
 import {Router} from "@angular/router";
 import {NgForm} from "@angular/forms";
@@ -21,22 +21,19 @@ export class Person{
 export class Step1Component {
     constructor(private regService: RegistrationService, private router: Router){}
     person: Person = new Person();
-    id: number = 0;
+    id: number = -1;
 
     submit(person : Person){
-        //alert("alert!");
         this.regService.getPersonId(person)
-            .subscribe(id_ => {this.id = id_; alert(id_);});
-        if (this.id != null)
-            this.router.navigateByUrl('/register/step2');
+            .subscribe(id_ => {
+                this.id = id_ > 0 ? id_ : -1;
+                if (this.id != -1){
+                    this.regService.sendData(this.id);
+                    this.router.navigateByUrl('/register/step2');
+                }else alert("Data is incorrect!");});
+
+
     }
 
-    // submit(form: NgForm){
-    //     alert("alert!");
-    // }
-
-    // onSubmit(f: NgForm) {
-    //     alert("alert!");
-    // }
 
 }

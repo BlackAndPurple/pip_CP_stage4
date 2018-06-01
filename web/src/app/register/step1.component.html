@@ -22,7 +22,7 @@
                 <input class="form-input form-control" type="date"  id="date_of_birth"  name="date_of_birth" [(ngModel)] = "person.date_of_birth" required>
                 <br>
 
-                <button type="button" [disabled]="checkPersonForm.invalid" class="log-in" (click)="submit(person)"> Next <i class="fas fa-angle-double-right" aria-hidden="true"></i></button>
+                <button type="submit" [disabled]="checkPersonForm.invalid" class="log-in" (click)="submit(person)"> Next <i class="fas fa-angle-double-right" aria-hidden="true"></i></button>
             </div>
 
         </div>

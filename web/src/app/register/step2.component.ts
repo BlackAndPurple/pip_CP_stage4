@@ -1,5 +1,6 @@
 import { Component} from '@angular/core';
 import {RegistrationService} from "../_services/registration.service";
+import {Subscription} from "rxjs/Subscription";
 
 export class User{
     username: string;
@@ -15,7 +16,11 @@ export class User{
     providers: [RegistrationService]
 })
 export class Step2Component {
-    constructor(private regService: RegistrationService){}
+    dataPassed: number;
+    subscription: Subscription;
+    constructor(private regService: RegistrationService){
+        this.subscription = this.regService.getData().subscribe(x => {this.dataPassed = x; alert("data passed: "+this.dataPassed)});
+    }
     user: User = new User();
     //id: number = 0;
 
