@@ -5,8 +5,11 @@ import {Subscription} from "rxjs/Subscription";
 export class User{
     username: string;
     password: string;
-    personId: number;
+    personId: string;
     email: string;
+    constructor(personId: string) {
+        this.personId = personId;
+    }
 }
 
 @Component({
@@ -16,16 +19,15 @@ export class User{
     providers: [RegistrationService]
 })
 export class Step2Component {
-    dataPassed: number;
-    subscription: Subscription;
-    constructor(private regService: RegistrationService){
-        this.subscription = this.regService.getData().subscribe(x => {this.dataPassed = x; alert("data passed: "+this.dataPassed)});
-    }
-    user: User = new User();
-    //id: number = 0;
+    personId: string = sessionStorage.getItem("personId");
+    user: User = new User(this.personId);
 
+    constructor(private regService: RegistrationService){
+    }
      submit(user : User){
-         alert("alert!");
+
+         alert(this.user.personId+" " + this.user.username);
+
     //     this.regService.getPersonId(person)
     //         .subscribe(id_ => {this.id = id_; alert(id_);})
      }

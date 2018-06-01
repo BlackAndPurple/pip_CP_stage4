@@ -28,7 +28,8 @@ export class Step1Component {
             .subscribe(id_ => {
                 this.id = id_ > 0 ? id_ : -1;
                 if (this.id != -1){
-                    this.regService.sendData(this.id);
+                    sessionStorage.setItem("personId", this.id.toString());
+                    //this.regService.sendData(this.id);
                     this.router.navigateByUrl('/register/step2');
                 }else alert("Data is incorrect!");});
 

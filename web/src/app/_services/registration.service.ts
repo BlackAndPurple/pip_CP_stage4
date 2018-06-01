@@ -25,17 +25,5 @@ export class RegistrationService{
         return this.http.post('./login/person_exists', body, httpOptions).map(resp => {return resp}) ;
     }
 
-    sendData(message: number) {
-        this.subject.next(message);
-        alert("data sent: "+message);
-    }
-
-    clearData() {
-        this.subject.next();
-    }
-
-    getData(): Observable<number> {
-        return this.subject.asObservable();
-    }
 
 }
