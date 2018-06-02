@@ -8,7 +8,7 @@ import {NoAuthGuard} from "../guards/NoAuthGuard";
     selector: 'main',
 
     templateUrl: './main.component.html',
-    styleUrls: ['../../../css/login.css'] //??
+    styleUrls: ['../../../css/main.css'] //??
 
 })
 export class MainComponent {
