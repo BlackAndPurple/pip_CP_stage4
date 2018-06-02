@@ -3,6 +3,7 @@ package controllers;
 import beans.IPeopleBean;
 import beans.IUserBean;
 import models.People;
+import models.User;
 import org.json.HTTP;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -57,18 +58,27 @@ public class LoginController extends HttpServlet {
         String path = req.getRequestURI().substring(req.getContextPath().length());
         String[] pathArr = path.split("/");
         JSONObject jsonObject;
-        //String stringResponse = null;
+        String username;
+        String result = String.valueOf(false);
         switch (pathArr[2]) {
             case "username_exists":
+                try{
+                    jsonObject = new JSONObject(getJsonString(req).toString());
+                    username = jsonObject.getString("username");
+                    User user = userBean.get(username);
+                    if (user != null){
+                        result = String.valueOf(true);
+                    }
+                }catch(JSONException e){
+                    throw new IOException("Error parsing JSON request string");
+                }finally {
+                    PrintWriter out = resp.getWriter();
+                    out.print(result);
+                    out.flush();
+                    out.close();
+                }
                 break;
             case "user_exists":
-//                StringBuffer jb = new StringBuffer();
-//                String line = null;
-//                try {
-//                    BufferedReader reader = req.getReader();
-//                    while ((line = reader.readLine()) != null)
-//                        jb.append(line);
-//                } catch (Exception e) { /*report an error*/ }
 
                 try {
 
@@ -115,7 +125,7 @@ public class LoginController extends HttpServlet {
                 String response = String.valueOf(false);
                 try{
                     jsonObject = new JSONObject(getJsonString(req).toString());
-                    String username = jsonObject.getString("username");
+                    username = jsonObject.getString("username");
                     String password = jsonObject.getString("password");
                     String personId = jsonObject.getString("personId");
                     String email = jsonObject.getString("email");
