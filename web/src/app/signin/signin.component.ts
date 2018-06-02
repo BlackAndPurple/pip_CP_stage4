@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {NgForm} from "@angular/forms";
 import {AuthenticationService} from "../_services/authentication.service";
 import { Router } from '@angular/router';
+import {NoAuthGuard} from "../guards/NoAuthGuard";
 
 @Component({
     selector: 'signin-form',
@@ -22,7 +23,7 @@ export class SignInComponent {
                 if (this.result == true){
                     sessionStorage.setItem("username", form.value.username);
                     this.router.navigateByUrl("/main");
-                }
+                }else alert("Username or password is incorrect! Please, try one more time");
 
             })
     }

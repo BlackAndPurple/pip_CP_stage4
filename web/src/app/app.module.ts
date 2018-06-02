@@ -10,12 +10,14 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {Step2Component} from "./register/step2.component";
 import {RegisterComponent} from "./register/register.component";
 import {MainComponent} from "./main_page/main.component";
+import {NoAuthGuard} from "./guards/NoAuthGuard";
+import { HttpModule } from '@angular/http';
 
 
 //определение маршрутов
 const appRoutes: Routes =[
     { path: '', component: SignInComponent},
-    { path: 'main', component: MainComponent},
+    { path: 'main', component: MainComponent, canActivate: [NoAuthGuard]},
     //{ path: 'register', component: RegisterComponent},
     //{ path: '**', component: RegisterComponent }
 ];
@@ -36,6 +38,7 @@ const loginRoutes : Routes = [
     imports:      [ BrowserModule, FormsModule, HttpClientModule, RouterModule.forRoot(appRoutes),
                     RouterModule.forRoot(loginRoutes), BrowserAnimationsModule/*, RouterModule.forRoot(registerRoutes) */ ],
     declarations: [ AppComponent, RegisterComponent, SignInComponent, Step1Component, Step2Component, MainComponent  ],
-    bootstrap:    [ AppComponent ]
+    bootstrap:    [ AppComponent ],
+    providers: [NoAuthGuard]
 })
 export class AppModule { }
