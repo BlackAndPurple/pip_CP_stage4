@@ -3,6 +3,7 @@ import {AuthenticationService} from "../_services/authentication.service";
 import {Component} from "@angular/core";
 import {NgForm} from "@angular/forms";
 import {NoAuthGuard} from "../guards/NoAuthGuard";
+import {NgbCollapse} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
     selector: 'main',
@@ -12,6 +13,9 @@ import {NoAuthGuard} from "../guards/NoAuthGuard";
 
 })
 export class MainComponent {
-    constructor(private router: Router){}
+    isCollapsed: boolean;
+    constructor(private router: Router){
+        this.isCollapsed = false;
+    }
 
 }

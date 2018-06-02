@@ -12,7 +12,7 @@ import {RegisterComponent} from "./register/register.component";
 import {MainComponent} from "./main_page/main.component";
 import {NoAuthGuard} from "./guards/NoAuthGuard";
 import { HttpModule } from '@angular/http';
-
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 //определение маршрутов
 const appRoutes: Routes =[
@@ -36,7 +36,7 @@ const loginRoutes : Routes = [
 
 @NgModule({
     imports:      [ BrowserModule, FormsModule, HttpClientModule, RouterModule.forRoot(appRoutes),
-                    RouterModule.forRoot(loginRoutes), BrowserAnimationsModule/*, RouterModule.forRoot(registerRoutes) */ ],
+                    RouterModule.forRoot(loginRoutes), BrowserAnimationsModule, NgbModule.forRoot()/*, RouterModule.forRoot(registerRoutes) */ ],
     declarations: [ AppComponent, RegisterComponent, SignInComponent, Step1Component, Step2Component, MainComponent  ],
     bootstrap:    [ AppComponent ],
     providers: [NoAuthGuard]
