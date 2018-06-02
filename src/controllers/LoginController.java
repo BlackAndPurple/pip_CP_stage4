@@ -84,8 +84,9 @@ public class LoginController extends HttpServlet {
 
                     //jsonObject = new JSONObject(jb.toString());
                     jsonObject = new JSONObject(getJsonString(req).toString());
+                    String password = jsonObject.getString("password");
                     String stringResponse = String.valueOf(userBean.get(jsonObject.getString("username"),
-                            jsonObject.getInt("password")) != null);
+                            password.hashCode()) != null);
                     PrintWriter out = resp.getWriter();
                     out.print(stringResponse);
                     out.flush();
