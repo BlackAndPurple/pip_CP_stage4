@@ -16,7 +16,15 @@ export class SignInComponent {
     submit(form: NgForm){
 
         this.authService.login(form.value.username, form.value.password)
-            .subscribe(x => {this.result = x; alert(this.result);})
+            .subscribe(x => {
+                this.result = x;
+                //alert(this.result == true);
+                if (this.result == true){
+                    sessionStorage.setItem("username", form.value.username);
+                    this.router.navigateByUrl("/main");
+                }
+
+            })
     }
 
     signUpClick(){
