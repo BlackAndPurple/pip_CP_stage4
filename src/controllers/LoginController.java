@@ -2,6 +2,7 @@ package controllers;
 
 import beans.IPeopleBean;
 import beans.IUserBean;
+import models.People;
 import org.json.HTTP;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -56,6 +57,7 @@ public class LoginController extends HttpServlet {
         String path = req.getRequestURI().substring(req.getContextPath().length());
         String[] pathArr = path.split("/");
         JSONObject jsonObject;
+        //String stringResponse = null;
         switch (pathArr[2]) {
             case "username_exists":
                 break;
@@ -110,6 +112,28 @@ public class LoginController extends HttpServlet {
 
                 break;
             case "add_user":
+                String response = String.valueOf(false);
+                try{
+                    jsonObject = new JSONObject(getJsonString(req).toString());
+                    String username = jsonObject.getString("username");
+                    String password = jsonObject.getString("password");
+                    String personId = jsonObject.getString("personId");
+                    String email = jsonObject.getString("email");
+                    People person = peopleBean.get(Long.parseLong(personId));
+                    if (person != null) {
+                        userBean.add(username, password.hashCode(), email, person);
+                        response = String.valueOf(true);
+                    }else response = String.valueOf(false);
+
+                }catch(JSONException e){
+                    throw new IOException("Error parsing JSON request string");
+                    //response = String.valueOf(false);
+                }finally {
+                    PrintWriter out = resp.getWriter();
+                    out.print(response);
+                    out.flush();
+                    out.close();
+                }
                 break;
         }
     }

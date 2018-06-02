@@ -16,8 +16,8 @@ public class User {
     @Column(name = "email")
     private String email;
 
-    @Column(name = "role")
-    private String role;
+    @Column(name = "admin")
+    private boolean admin;
 
     @OneToOne
     @PrimaryKeyJoinColumn(name = "person_id", referencedColumnName = "person_id")
@@ -67,11 +67,11 @@ public class User {
         this.person_id = person_id;
     }
 
-    public String getRole() {
-        return role;
+    public boolean IsAdmin() {
+        return admin;
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    public void setAdmin(boolean admin) {
+        this.admin = admin;
     }
 }

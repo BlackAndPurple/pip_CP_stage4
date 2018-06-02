@@ -26,15 +26,15 @@ export class RegistrationService{
         return this.http.post('./login/person_exists', body, httpOptions).map(resp => {return resp}) ;
     }
 
-    addUser(user : User){
+    addUser(user : User): Observable<any>{
         const httpOptions = {
             headers: new HttpHeaders({
                 'Content-Type':  'application/json',
             })
         };
         const body = JSON.stringify({username: user.username, personId: user.personId,
-            password: user.password, email: user.email});
-        this.http.post('./login/add_user', body, httpOptions);
+                                            password: user.password, email: user.email});
+        return this.http.post('./login/add_user', body, httpOptions).map(resp => {return resp});
     }
 
 

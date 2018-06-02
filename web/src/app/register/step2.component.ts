@@ -22,14 +22,18 @@ export class Step2Component {
 
     personId: string = sessionStorage.getItem("personId");
     user: User = new User(this.personId);
+    success : boolean;
 
-    constructor(private regService: RegistrationService, private router: Router){
-    }
+    constructor(private regService: RegistrationService, private router: Router){}
      submit(user : User){
-
-         this.regService.addUser(this.user);
-         alert("You've successfully registered! Sign in to continue... ");
-         this.router.navigateByUrl('/');
+         this.regService.addUser(this.user)
+             .subscribe(result => {
+                 this.success = result;
+                 if (this.success){
+                     sessionStorage.removeItem("personId");
+                     alert("You've successfully registered! Log in to continue... ");
+                     this.router.navigateByUrl('/');
+                 }else alert("Error while registering! Try one more time...");});
 
      }
 
