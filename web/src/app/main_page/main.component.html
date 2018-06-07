@@ -8,7 +8,7 @@
                 <span class="icon-bar"></span>
             </button>
             <!--a class="navbar-brand" href="#"><span class="fas fa-user-circle"></span><span class="link"> Profile</span></a-->
-            <a class="navbar-brand" href="#">Sunny Kindergarten</a>
+            <a class="navbar-brand">Sunny Kindergarten</a>
         </div>
         <!-- Nav Collapse -->
         <div class="navbar-collapse collapse" id="navbar-main" [ngbCollapse]="isCollapsed">
@@ -16,17 +16,17 @@
             <ul class="nav navbar-nav">
 
 
-                    <a class="navbar-brand" href="#"><span class="fas fa-user-circle"></span><span class="link"> Profile</span></a>
+                    <a class="navbar-brand" routerLink="/main/profile"><span class="fas fa-user-circle"></span><span class="link"> Profile</span></a>
 
                 <!-- Kids -->
 
-                    <a class="navbar-brand" href="#">
+                    <a class="navbar-brand" routerLink="/main/kids">
                         <span class="fas fa-child"></span><span class="link"> Kids</span>
                     </a>
 
                 <!-- Settings -->
 
-                    <a class="navbar-brand" href="#">
+                    <a class="navbar-brand" routerLink="/main/settings">
                         <span class="fas fa-cogs"></span><span class="link"> Settings</span>
                     </a>
 
@@ -42,3 +42,4 @@
         </div>
     </div>
 </nav>
+<router-outlet></router-outlet>

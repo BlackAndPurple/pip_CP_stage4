@@ -13,11 +13,21 @@ import {MainComponent} from "./main_page/main.component";
 import {NoAuthGuard} from "./guards/NoAuthGuard";
 import { HttpModule } from '@angular/http';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {ProfileComponent} from "./profile/profile.component";
+import {KidsComponent} from "./kids/kids.component";
+import {SettingsComponent} from "./settings/settings.component";
 
 //определение маршрутов
+
+const mainRoutes : Routes = [
+    {path: "profile", component: ProfileComponent},
+    {path: "kids", component: KidsComponent},
+    {path: "settings", component: SettingsComponent}
+];
+
 const appRoutes: Routes =[
     { path: '', component: SignInComponent},
-    { path: 'main', component: MainComponent, canActivate: [NoAuthGuard]},
+    { path: 'main', component: MainComponent, canActivate: [NoAuthGuard], children: mainRoutes},
     //{ path: 'register', component: RegisterComponent},
     //{ path: '**', component: RegisterComponent }
 ];
@@ -34,10 +44,12 @@ const loginRoutes : Routes = [
 ];
 
 
+
 @NgModule({
     imports:      [ BrowserModule, FormsModule, HttpClientModule, RouterModule.forRoot(appRoutes),
                     RouterModule.forRoot(loginRoutes), BrowserAnimationsModule, NgbModule.forRoot()/*, RouterModule.forRoot(registerRoutes) */ ],
-    declarations: [ AppComponent, RegisterComponent, SignInComponent, Step1Component, Step2Component, MainComponent  ],
+    declarations: [ AppComponent, RegisterComponent, SignInComponent, Step1Component, Step2Component,
+                    MainComponent, ProfileComponent, KidsComponent, SettingsComponent  ],
     bootstrap:    [ AppComponent ],
     providers: [NoAuthGuard]
 })
