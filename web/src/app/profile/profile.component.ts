@@ -23,12 +23,16 @@ export class ProfileComponent {
     }
     username : string = sessionStorage.getItem("username");
     person : Person = new Person;
+    gender : string;
 
     imageSrc = require('../../../static/user.png');
 
     ngOnInit(){
         this.profileService.getPerson(this.username)
-            .subscribe((person : Person) => {this.person = person;})
+            .subscribe((person : Person) => {
+                this.person = person;
+                this.gender = this.person.sex ? "Male" : "Female";
+            })
     }
 
 }

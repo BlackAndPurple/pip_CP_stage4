@@ -22,7 +22,7 @@ export class SignInComponent {
                 //alert(this.result == true);
                 if (this.result == true){
                     sessionStorage.setItem("username", form.value.username);
-                    this.router.navigateByUrl("/main");
+                    this.router.navigateByUrl("/main/profile");
                 }else alert("Username or password is incorrect! Please, try one more time");
 
             })

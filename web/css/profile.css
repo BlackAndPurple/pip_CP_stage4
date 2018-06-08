@@ -1,4 +1,17 @@
 #profile-card{
     background-color: white;
+    padding: 5%;
+    padding-top: 2% ;
+    font-size: 18px;
+    width: 70%;
+    border-radius: 25px;
+}
+
+.pink-font{
+    color: #F23063;
+}
+
+#name{
+    font-size: 24px; !important;
 
 }

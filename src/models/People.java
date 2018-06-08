@@ -29,8 +29,9 @@ public class People implements Serializable{
     private String surname;
     private boolean sex;
 
+    @Column(name="date_of_birth")
     @Temporal(TemporalType.DATE)
-    private Date date_of_birth;
+    private Date dateOfBirth;
 
     @OneToMany(targetEntity = Staff.class, mappedBy = "person")
     private Collection<Staff> staff;
@@ -39,7 +40,7 @@ public class People implements Serializable{
     public String toString() {
         String date = null;
         try{
-            date = new SimpleDateFormat("dd-MM-yyyy").format(date_of_birth);
+            date = new SimpleDateFormat("dd-MM-yyyy").format(dateOfBirth);
         }catch(NullPointerException e){
             e.printStackTrace();
         }
@@ -87,11 +88,11 @@ public class People implements Serializable{
     }
 
     public Date getDate_of_birth() {
-        return date_of_birth;
+        return dateOfBirth;
     }
 
-    public void setDate_of_birth(Date date_of_birth) {
-        this.date_of_birth = date_of_birth;
+    public void setDate_of_birth(Date dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
     }
 
     public Collection<Staff> getStaff() {

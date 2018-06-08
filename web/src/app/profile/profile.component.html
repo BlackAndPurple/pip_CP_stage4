@@ -1,7 +1,7 @@
 <div class="container" id="profile-card">
     <div class="row">
         <div class="col-sm">
-            profile
+            <h2 class="pink-font">Profile</h2>
             <!--content-->
 
 
@@ -11,8 +11,11 @@
                         <img class="img-responsive" src="{{imageSrc}}">
                     </div>
                 </div>
-                <div class="row">
-                    {{person?.name}} {{person?.middleName}} {{person?.surname}}
+                <div class="row justify-content-lg-center">
+                    <p><b class="" id="name">{{person?.name}} {{person?.middleName}} {{person?.surname}}</b></p>
+                    <p><b class="pink-font">Gender:</b> {{gender}}</p>
+                    <p><b class="pink-font">Date of birth:</b> {{person?.date_of_birth}}</p>
+                    <h3 class="pink-font">Contacts</h3>
                 </div>
             </div>
 
