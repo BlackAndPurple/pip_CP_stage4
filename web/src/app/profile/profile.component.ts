@@ -1,14 +1,13 @@
 import {Component} from "@angular/core";
-import {RegistrationService} from "../_services/registration.service";
 import {ProfileService} from "../_services/profile.service";
 //import {AuthenticationService} from "../_services/authentication.service";
 
 export class Person{
     name: string;
-    middle_name: string;
+    middleName: string;
     surname: string;
-    gender: boolean;
-    date_of_birth: string;
+    sex: boolean;
+    dateOfBirth: string;
 
 }
 
@@ -23,7 +22,7 @@ export class ProfileComponent {
     constructor(private profileService: ProfileService) {
     }
     username : string = sessionStorage.getItem("username");
-    person : Person;
+    person : Person = new Person;
 
     imageSrc = require('../../../static/user.png');
 
