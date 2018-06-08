@@ -21,7 +21,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class LoginController extends HttpServlet {
+public class LoginController extends HttpServlet implements JsonToStringConverter{
 
     @EJB
     IPeopleBean peopleBean;
@@ -29,16 +29,16 @@ public class LoginController extends HttpServlet {
     @EJB
     IUserBean userBean;
 
-    private StringBuffer getJsonString(HttpServletRequest req){
-        StringBuffer jb = new StringBuffer();
-        String line = null;
-        try {
-            BufferedReader reader = req.getReader();
-            while ((line = reader.readLine()) != null)
-                jb.append(line);
-        } catch (Exception e) { return null; }
-        return jb;
-    }
+//    private StringBuffer getJsonString(HttpServletRequest req){
+//        StringBuffer jb = new StringBuffer();
+//        String line = null;
+//        try {
+//            BufferedReader reader = req.getReader();
+//            while ((line = reader.readLine()) != null)
+//                jb.append(line);
+//        } catch (Exception e) { return null; }
+//        return jb;
+//    }
 
     private Date parseDate(String stringDate){
         Date date = null;
