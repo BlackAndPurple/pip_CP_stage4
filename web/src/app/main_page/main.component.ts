@@ -17,5 +17,17 @@ export class MainComponent {
     constructor(private router: Router){
         this.isCollapsed = false;
     }
+    result: boolean;
+    goOut(){
+        this.result = confirm("Are you sure you want to go out?");
+        //alert(this.result);
+        if (this.result){
+            //alert("personId = " + sessionStorage.getItem("username"));
+            sessionStorage.removeItem("username");
+            //alert("personId = " + sessionStorage.getItem("username"));
+            this.router.navigateByUrl('/');
+        }
+
+    }
 
 }

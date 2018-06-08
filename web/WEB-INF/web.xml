@@ -24,6 +24,16 @@
         <url-pattern>/login/*</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>profile controller</servlet-name>
+        <servlet-class>controllers.ProfileController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>profile controller</servlet-name>
+        <url-pattern>/profile/*</url-pattern>
+    </servlet-mapping>
+
     <!--beans-->
     <ejb-local-ref>
         <ejb-ref-name>peopleBean</ejb-ref-name>

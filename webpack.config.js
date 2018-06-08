@@ -37,6 +37,20 @@ module.exports = {
                 test: /\.html$/,
                 include: path.resolve(__dirname,'./web/src/app'),
                 loader: 'html-loader'
+            },
+            {
+                test: /\.(gif|png|jpe?g|svg)$/i,
+                include: path.resolve(__dirname,'./web/static'),
+                use: [
+                    'file-loader',
+                    {
+                        loader: 'image-webpack-loader',
+                        options: {
+                            bypassOnDebug: true, // webpack@1.x
+                            disable: true, // webpack@2.x and newer
+                        },
+                    },
+                ],
             }
         ]
     },
