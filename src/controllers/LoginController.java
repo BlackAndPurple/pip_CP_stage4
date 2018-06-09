@@ -131,8 +131,8 @@ public class LoginController extends HttpServlet implements JsonToStringConverte
                 result = String.valueOf(false);
                 try{
                     jsonObject = new JSONObject(getJsonString(req).toString());
-                    String personId = jsonObject.getString("personId");
-                    Parent parent = parentBean.get(Long.parseLong(personId));
+                    Long personId = jsonObject.getLong("personId");
+                    Parent parent = parentBean.get(personId);
                     if (parent != null){
                         result = String.valueOf(true);
                     }

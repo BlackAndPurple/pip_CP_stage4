@@ -26,10 +26,18 @@ export class Step1Component {
     submit(person : Person){
         this.regService.getPersonId(person)
             .subscribe(id_ => {
+
                 this.id = id_ > 0 ? id_ : -1;
                 if (this.id != -1){
-                    sessionStorage.setItem("personId", this.id.toString());
-                    this.router.navigateByUrl('/register/step2');
+                    this.regService.parentExists(this.id)
+                        .subscribe((result : boolean) => {
+                            //alert("parent exists: " + result);
+                            if (result){
+                                sessionStorage.setItem("personId", this.id.toString());
+                                this.router.navigateByUrl('/register/step2');
+                            }else alert("This person is not a parent!")
+                        });
+
                 }else alert("Data is incorrect!");});
 
 
