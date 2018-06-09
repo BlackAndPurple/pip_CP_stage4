@@ -29,7 +29,6 @@ export class Step1Component {
                 this.id = id_ > 0 ? id_ : -1;
                 if (this.id != -1){
                     sessionStorage.setItem("personId", this.id.toString());
-                    //this.regService.sendData(this.id);
                     this.router.navigateByUrl('/register/step2');
                 }else alert("Data is incorrect!");});
 

@@ -43,7 +43,7 @@ public class SessionPeopleBean implements IPeopleBean{
         try{
             person = (People)em.createQuery("select person from People person where person.name = \'" + name +
                     "\' and person.middleName = \'" + middleName + "\' and person.surname = \'" +surname +
-                    "\' and person.sex = " + sex + " and person.date_of_birth = \'" + date +"\'").getSingleResult();
+                    "\' and person.sex = " + sex + " and person.dateOfBirth = \'" + date +"\'").getSingleResult();
         }catch (Exception e){
             e.printStackTrace();
         }

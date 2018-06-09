@@ -1,7 +1,9 @@
 package controllers;
 
+import beans.IParentBean;
 import beans.IPeopleBean;
 import beans.IUserBean;
+import models.Parent;
 import models.People;
 import models.User;
 import org.json.HTTP;
@@ -28,6 +30,9 @@ public class LoginController extends HttpServlet implements JsonToStringConverte
 
     @EJB
     IUserBean userBean;
+
+    @EJB
+    IParentBean parentBean;
 
 //    private StringBuffer getJsonString(HttpServletRequest req){
 //        StringBuffer jb = new StringBuffer();
@@ -121,6 +126,24 @@ public class LoginController extends HttpServlet implements JsonToStringConverte
                     throw new IOException("Error parsing JSON request string");
                 }
 
+                break;
+            case "parent_exists":
+                result = String.valueOf(false);
+                try{
+                    jsonObject = new JSONObject(getJsonString(req).toString());
+                    String personId = jsonObject.getString("personId");
+                    Parent parent = parentBean.get(Long.parseLong(personId));
+                    if (parent != null){
+                        result = String.valueOf(true);
+                    }
+                }catch(JSONException e){
+                    throw new IOException("Error parsing JSON request string");
+                }finally {
+                    PrintWriter out = resp.getWriter();
+                    out.print(result);
+                    out.flush();
+                    out.close();
+                }
                 break;
             case "add_user":
                 String response = String.valueOf(false);
