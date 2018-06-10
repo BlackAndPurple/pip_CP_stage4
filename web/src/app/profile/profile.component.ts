@@ -8,7 +8,14 @@ export class Person{
     surname: string;
     sex: boolean;
     dateOfBirth: string;
+}
 
+export class Contacts{
+    homeAddress : string;
+    job : string;
+    jobPhoneNumber : string;
+    cellphoneNumber : string;
+    //date of creating
 }
 
 @Component({
@@ -23,6 +30,7 @@ export class ProfileComponent {
     }
     username : string = sessionStorage.getItem("username");
     person : Person = new Person;
+    contacts : Contacts = new Contacts;
     gender : string;
 
     date: Date;
@@ -31,6 +39,8 @@ export class ProfileComponent {
     imageSrc = require('../../../static/user.png');
 
     ngOnInit(){
+
+        //getting personal data
         this.profileService.getPerson(this.username)
             .finally(() => {alert("in finally, date: " + this.person.dateOfBirth)})
             .subscribe((person : Person) => {
@@ -42,6 +52,15 @@ export class ProfileComponent {
             }/*, () => console.log("error"),
                 () => alert("When complete: date: " + this.person.dateOfBirth + " gender: " + this.person.sex)*/);
 
+
+        //getting parent contacts
+        this.profileService.getContacts(this.username)
+            .subscribe((contacts : Contacts) => {
+                alert("Contacts recieved: " + contacts.homeAddress);
+                this.contacts = contacts;
+            })
     }
+
+
 
 }

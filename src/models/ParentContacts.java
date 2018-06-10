@@ -1,23 +1,30 @@
 package models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.naming.NameAlreadyBoundException;
 import javax.persistence.*;
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Entity
 @Table(name = "PARENT_CONTACTS", schema = "s225128")
-public class ParentContacts {
+public class ParentContacts implements Serializable {
 
+    @JsonIgnore
     @Id
     @Column(name = "contacts_ID")
     @GeneratedValue(strategy= GenerationType.SEQUENCE, generator = "IdSeq5")
     @SequenceGenerator(name="IdSeq5",sequenceName="s225128.contacts_ids", allocationSize=1)
     private long contacts_id;
 
+    @JsonIgnore
     @Temporal(TemporalType.DATE)
-    private Date date_of_creating;
+    @Column(name = "date_of_creating")
+    private Date dateOfCreating;
 
+    @JsonIgnore
     @Column(name = "parent_id")
     private long parent_id;
 
@@ -34,6 +41,7 @@ public class ParentContacts {
     @Column(name="CELL_PHONE_NUMBER", columnDefinition = "VARCHAR(30)")
     private String cellphoneNumber;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "parent_id", /*, referencedColumnName = "parent_id", */insertable = false, updatable=false) //used to be name="PARENT_ID" and it didnt work
     //@Column(name = "parent_id", insertable=false, updatable=false)
@@ -46,7 +54,7 @@ public class ParentContacts {
 
     @Override
     public String toString() {
-        return "ID: " + contacts_id + " | parent_id: " + parent_id + " | date_of_creating: " + new SimpleDateFormat("dd-MM-yyyy").format(date_of_creating) + " | job: " +
+        return "ID: " + contacts_id + " | parent_id: " + parent_id + " | date_of_creating: " + new SimpleDateFormat("dd-MM-yyyy").format(dateOfCreating) + " | job: " +
                 job + " | home_address: " + homeAddress + " | job_phone_number: " + jobPhoneNumber + " | cell_phone_number: " + cellphoneNumber;
     }
 
@@ -62,11 +70,11 @@ public class ParentContacts {
 
 
     public Date getDate_of_creating() {
-        return date_of_creating;
+        return dateOfCreating;
     }
 
     public void setDate_of_creating(Date date_of_creating) {
-        this.date_of_creating = date_of_creating;
+        this.dateOfCreating = date_of_creating;
     }
 
     public String getHomeAddress() {

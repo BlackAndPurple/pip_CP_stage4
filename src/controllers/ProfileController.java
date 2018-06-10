@@ -1,7 +1,12 @@
 package controllers;
 
+import beans.IContactsBean;
+import beans.IParentBean;
 import beans.IPeopleBean;
 import beans.IUserBean;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import models.Parent;
+import models.ParentContacts;
 import models.People;
 import models.User;
 import org.json.JSONException;
@@ -24,6 +29,12 @@ public class ProfileController extends HttpServlet implements JsonToStringConver
 
     @EJB
     IUserBean userBean;
+
+    @EJB
+    IParentBean parentBean;
+
+    @EJB
+    IContactsBean contsctsBean;
 
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -53,6 +64,27 @@ public class ProfileController extends HttpServlet implements JsonToStringConver
 
 
 
+                break;
+            case "get_contacts":
+                try {
+                    jsonObject = new JSONObject(getJsonString(request).toString());
+                    username = jsonObject.getString("username");
+                    User user = userBean.get(username);
+                    People person = peopleBean.get(user.getPerson_id());
+                    Parent parent = parentBean.get(person.getPerson_id());
+                    ParentContacts contacts = contsctsBean.getLatest(parent.getParent_id());
+                    ObjectMapper mapper = new ObjectMapper();
+                    result = mapper.writeValueAsString(contacts);
+                   // jsonObject = new JSONObject(contacts);
+                    //result = jsonObject.toString();
+                }catch(JSONException e){
+                    throw new IOException("Error parsing JSON request string");
+                }finally {
+                    PrintWriter out = response.getWriter();
+                    out.print(result);
+                    out.flush();
+                    out.close();
+                }
                 break;
         }
     }

@@ -1,7 +1,7 @@
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Injectable} from "@angular/core";
 import {Observable} from "rxjs/Observable";
-import {Person} from "../profile/profile.component";
+import {Contacts, Person} from "../profile/profile.component";
 
 @Injectable()
 export class ProfileService {
@@ -22,5 +22,16 @@ export class ProfileService {
         const body = JSON.stringify({username: username});
 
         return this.http.post('./profile/get_person', body, httpOptions).map((resp : Person) => {return resp});
+    }
+
+    getContacts(username : string) : Observable<Contacts>{
+        const httpOptions = {
+            headers: new HttpHeaders({
+                'Content-Type':  'application/json',
+            })
+        };
+        const body = JSON.stringify({username: username});
+
+        return this.http.post('./profile/get_contacts', body, httpOptions).map((resp : Contacts) => {return resp});
     }
 }
