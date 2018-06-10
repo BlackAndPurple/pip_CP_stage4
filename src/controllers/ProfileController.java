@@ -57,8 +57,6 @@ public class ProfileController extends HttpServlet implements JsonToStringConver
                     mapper = new ObjectMapper();
                     mapper.setDateFormat(df);
                     result = mapper.writeValueAsString(person);
-//                    jsonObject = new JSONObject(person);
-//                    result = jsonObject.toString();
                 }catch(JSONException e){
                     throw new IOException("Error parsing JSON request string");
                 }finally {
@@ -81,8 +79,6 @@ public class ProfileController extends HttpServlet implements JsonToStringConver
                     ParentContacts contacts = contsctsBean.getLatest(parent.getParent_id());
                     mapper = new ObjectMapper();
                     result = mapper.writeValueAsString(contacts);
-                   // jsonObject = new JSONObject(contacts);
-                    //result = jsonObject.toString();
                 }catch(JSONException e){
                     throw new IOException("Error parsing JSON request string");
                 }finally {

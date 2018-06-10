@@ -34,29 +34,22 @@ export class ProfileComponent {
     gender : string;
 
     date: Date;
-    dateLoaded: Promise<boolean>;
 
-    imageSrc = require('../../../static/user.png');
+    imageSrc = require('../../images/user.png');
 
     ngOnInit(){
 
         //getting personal data
         this.profileService.getPerson(this.username)
-            //.finally(() => {alert("in finally, date: " + this.person.dateOfBirth)})
             .subscribe((person : Person) => {
-                //alert("Before assigning: date: " + person.dateOfBirth + " gender: " + person.sex);
                 this.person = person;
-                //alert("date: " + this.person.dateOfBirth + " gender: " + this.person.sex);
                 this.gender = this.person.sex ? "Male" : "Female";
-                //alert("in subscribe: " + person.dateOfBirth);
-            }/*, () => console.log("error"),
-                () => alert("When complete: date: " + this.person.dateOfBirth + " gender: " + this.person.sex)*/);
+            });
 
 
         //getting parent contacts
         this.profileService.getContacts(this.username)
             .subscribe((contacts : Contacts) => {
-                //alert("Contacts recieved: " + contacts.homeAddress);
                 this.contacts = contacts;
             })
     }

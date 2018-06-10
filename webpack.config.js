@@ -1,6 +1,7 @@
 var path = require('path');
 var webpack = require('webpack');
 var UglifyJSPlugin = require('uglifyjs-webpack-plugin'); // плагин минимизации
+var CopyWebpackPlugin = require('copy-webpack-plugin');
 module.exports = {
     entry: {
         'polyfills': './web/src/polyfills.ts',
@@ -40,7 +41,7 @@ module.exports = {
             },
             {
                 test: /\.(gif|png|jpe?g|svg)$/i,
-                include: path.resolve(__dirname,'./web/static'),
+                include: path.resolve(__dirname,'./web/src/images'),
                 use: [
                     'file-loader',
                     {
@@ -63,6 +64,9 @@ module.exports = {
         new webpack.optimize.CommonsChunkPlugin({
             name: ['app', 'polyfills']
         }),
-        new UglifyJSPlugin()
+        new UglifyJSPlugin(),
+        new CopyWebpackPlugin([
+            {from:'./web/src/images',to:'images'}
+        ])
     ]
 };
