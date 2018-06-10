@@ -42,7 +42,7 @@ export class ProfileComponent {
 
         //getting personal data
         this.profileService.getPerson(this.username)
-            .finally(() => {alert("in finally, date: " + this.person.dateOfBirth)})
+            //.finally(() => {alert("in finally, date: " + this.person.dateOfBirth)})
             .subscribe((person : Person) => {
                 //alert("Before assigning: date: " + person.dateOfBirth + " gender: " + person.sex);
                 this.person = person;
@@ -56,7 +56,7 @@ export class ProfileComponent {
         //getting parent contacts
         this.profileService.getContacts(this.username)
             .subscribe((contacts : Contacts) => {
-                alert("Contacts recieved: " + contacts.homeAddress);
+                //alert("Contacts recieved: " + contacts.homeAddress);
                 this.contacts = contacts;
             })
     }
