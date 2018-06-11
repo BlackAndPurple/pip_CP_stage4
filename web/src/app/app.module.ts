@@ -16,11 +16,18 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {ProfileComponent} from "./profile/profile.component";
 import {KidsComponent} from "./kids/kids.component";
 import {SettingsComponent} from "./settings/settings.component";
+import {ProfileShowComponent} from "./profile/profile.show/profile.show.component";
+import {ProfileEditComponent} from "./profile/profile.edit/profile.edit.component";
 
 //определение маршрутов
 
+const profileRoutes : Routes = [
+    {path : '', component: ProfileShowComponent },
+    {path : 'edit', component: ProfileEditComponent}
+];
+
 const mainRoutes : Routes = [
-    {path: "profile", component: ProfileComponent},
+    {path: "profile", component: ProfileComponent, children: profileRoutes},
     {path: "kids", component: KidsComponent},
     {path: "settings", component: SettingsComponent}
 ];
@@ -49,7 +56,8 @@ const loginRoutes : Routes = [
     imports:      [ BrowserModule, FormsModule, HttpClientModule, RouterModule.forRoot(appRoutes),
                     RouterModule.forRoot(loginRoutes), BrowserAnimationsModule, NgbModule.forRoot()/*, RouterModule.forRoot(registerRoutes) */ ],
     declarations: [ AppComponent, RegisterComponent, SignInComponent, Step1Component, Step2Component,
-                    MainComponent, ProfileComponent, KidsComponent, SettingsComponent  ],
+                    MainComponent, ProfileComponent, KidsComponent, SettingsComponent, ProfileShowComponent,
+                    ProfileEditComponent  ],
     bootstrap:    [ AppComponent ],
     providers: [NoAuthGuard]
 })

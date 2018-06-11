@@ -4,27 +4,28 @@
 
             <!--white card itself-->
             <div class="container" id="profile-card">
-                <div id="profile-title-row" class="row ">
-                    <div id="profile-div" class="col-xs-4 col-sm-2 col-md-1">
-                        <h2 class="pink-font">Profile</h2>
-                    </div>
-                    <div id="link-div" class="col-xs-4 col-sm-2 col-md-1 ">
-                        <a id="edit-link" href=""> (Edit)</a>
-                    </div>
-                </div>
+                <router-outlet></router-outlet>
+                <!--<div id="profile-title-row" class="row ">-->
+                    <!--<div id="profile-div" class="col-xs-4 col-sm-2 col-md-1">-->
+                        <!--<h2 class="pink-font">Profile</h2>-->
+                    <!--</div>-->
+                    <!--<div id="link-div" class="col-xs-4 col-sm-2 col-md-1 ">-->
+                        <!--<a id="edit-link" href=""> (Edit)</a>-->
+                    <!--</div>-->
+                <!--</div>-->
 
-                <div class="row ">
-                    <p><b class="" id="name">{{person?.name}} {{person?.middleName}} {{person?.surname}}</b></p>
-                    <p><b class="pink-font">Gender:</b> {{gender}}</p>
-                    <p><b class="pink-font">Date of birth:</b> {{person?.date_of_birth}}</p>
+                <!--<div class="row ">-->
+                    <!--<p><b class="" id="name">{{person?.name}} {{person?.middleName}} {{person?.surname}}</b></p>-->
+                    <!--<p><b class="pink-font">Gender:</b> {{gender}}</p>-->
+                    <!--<p><b class="pink-font">Date of birth:</b> {{person?.date_of_birth}}</p>-->
 
-                    <h2 class="pink-font">Contacts</h2>
-                    <p><b class="pink-font">Home address:</b> {{contacts.homeAddress}}</p>
-                    <p><b class="pink-font">Job:</b> {{contacts.job}}</p>
-                    <p><b class="pink-font">Job phone number:</b> {{contacts.jobPhoneNumber}}</p>
-                    <p><b class="pink-font">Cellphone number:</b> {{contacts.cellphoneNumber}}</p>
+                    <!--<h2 class="pink-font">Contacts</h2>-->
+                    <!--<p><b class="pink-font">Home address:</b> {{contacts.homeAddress}}</p>-->
+                    <!--<p><b class="pink-font">Job:</b> {{contacts.job}}</p>-->
+                    <!--<p><b class="pink-font">Job phone number:</b> {{contacts.jobPhoneNumber}}</p>-->
+                    <!--<p><b class="pink-font">Cellphone number:</b> {{contacts.cellphoneNumber}}</p>-->
 
-                </div>
+                <!--</div>-->
             </div>
 
         </div>

@@ -1,7 +1,8 @@
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Injectable} from "@angular/core";
 import {Observable} from "rxjs/Observable";
-import {Contacts, Person} from "../profile/profile.component";
+import {Contacts, Person} from "../profile/profile.show/profile.show.component";
+//import {Contacts, Person} from "../profile/profile.component";
 
 @Injectable()
 export class ProfileService {
