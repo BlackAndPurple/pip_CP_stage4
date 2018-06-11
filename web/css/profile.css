@@ -1,9 +1,9 @@
 #profile-card{
     background-color: white;
-    padding: 5%;
-    padding-top: 2% ;
+    padding: 10%;
+    padding-top: 6% ;
     font-size: 18px;
-    width: 70%;
+    /*width: 70%;*/
     border-radius: 25px;
 }
 
@@ -14,4 +14,30 @@
 #name{
     font-size: 24px; !important;
 
+}
+
+#edit-link{
+    /*padding-top: 20px;*/
+    /*margin-top: 20px; !important;*/
+    size: 10px; !important;
+    text-decoration: none;
+    color: #5E6472;
+}
+
+#link-div{
+    /*vertical-align: middle;*/
+
+    padding-top: 10px;
+    /*margin-top: 20px; !important;*/
+}
+
+#profile-title-row{
+    display:flex;
+    flex-direction: row;
+    align-items:center;
+    justify-content:left;
+}
+
+#profile-div{
+    padding-left: 0;
 }
