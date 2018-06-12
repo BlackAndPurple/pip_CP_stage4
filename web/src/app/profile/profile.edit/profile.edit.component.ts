@@ -56,12 +56,13 @@ export class ProfileEditComponent {
     }
 
     submit(){
-        alert("form submitted");
         //post person data
-        this.profileService.updatePerson(this.username, this.person);
+        this.profileService.updatePerson(this.username, this.person)
+            .subscribe((result : boolean) => {});
 
         //post contacts data
-        this.profileService.postContacts(this.username, this.contacts);
+        this.profileService.postContacts(this.username, this.contacts)
+            .subscribe((result : boolean) => {} );
     }
 
 

@@ -23,7 +23,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class LoginController extends HttpServlet implements JsonToStringConverter{
+public class LoginController extends HttpServlet implements JsonToStringAndDateConverter{
 
     @EJB
     IPeopleBean peopleBean;
@@ -45,18 +45,18 @@ public class LoginController extends HttpServlet implements JsonToStringConverte
 //        return jb;
 //    }
 
-    private Date parseDate(String stringDate){
-        Date date = null;
-        if ((stringDate != null) && !stringDate.equals("")) {
-            DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-            try {
-                date = format.parse(stringDate);
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
-        }
-        return date;
-    }
+//    private Date parseDate(String stringDate){
+//        Date date = null;
+//        if ((stringDate != null) && !stringDate.equals("")) {
+//            DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+//            try {
+//                date = format.parse(stringDate);
+//            } catch (ParseException e) {
+//                e.printStackTrace();
+//            }
+//        }
+//        return date;
+//    }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

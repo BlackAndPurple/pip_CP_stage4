@@ -41,12 +41,13 @@ export class ProfileService {
         return this.http.post('./profile/get_contacts', body, httpOptions).map((resp : Contacts) => {return resp});
     }
 
-    updatePerson(username: string, person : Person){
+    updatePerson(username: string, person : Person): Observable<boolean>{
         const httpOptions = {
             headers: new HttpHeaders({
                 'Content-Type':  'application/json',
             })
         };
+
         const body = JSON.stringify({username: username,
                                             name: person.name,
                                             middleName: person.middleName,
@@ -54,10 +55,11 @@ export class ProfileService {
                                             sex: person.sex,
                                             dateOfBirth: person.dateOfBirth});
 
-        this.http.post('./profile/update_person', body, httpOptions);
+        return this.http.post('./profile/update_person', body, httpOptions)
+            .map((resp : boolean) => {return resp});
     }
 
-    postContacts(username: string, contacts: Contacts){
+    postContacts(username: string, contacts: Contacts): Observable<boolean>{
 
         const httpOptions = {
             headers: new HttpHeaders({
@@ -70,7 +72,8 @@ export class ProfileService {
                                             jobPhoneNumber: contacts.jobPhoneNumber,
                                             cellphoneNumber: contacts.cellphoneNumber});
 
-        this.http.post('./profile/post_contacts', body, httpOptions);
+        return this.http.post('./profile/post_contacts', body, httpOptions)
+            .map((resp : boolean) => {return resp});
 
     }
 

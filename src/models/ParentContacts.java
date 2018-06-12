@@ -17,7 +17,7 @@ public class ParentContacts implements Serializable {
     @Column(name = "contacts_ID")
     @GeneratedValue(strategy= GenerationType.SEQUENCE, generator = "IdSeq5")
     @SequenceGenerator(name="IdSeq5",sequenceName="s225128.contacts_ids", allocationSize=1)
-    private long contacts_id;
+    private Long contacts_id;
 
     @JsonIgnore
     @Temporal(TemporalType.DATE)
@@ -52,13 +52,13 @@ public class ParentContacts implements Serializable {
         parent_id = parent.getParent_id();
     }
 
-    @Override
-    public String toString() {
-        return "ID: " + contacts_id + " | parent_id: " + parent_id + " | date_of_creating: " + new SimpleDateFormat("dd-MM-yyyy").format(dateOfCreating) + " | job: " +
-                job + " | home_address: " + homeAddress + " | job_phone_number: " + jobPhoneNumber + " | cell_phone_number: " + cellphoneNumber;
-    }
+//    @Override
+//    public String toString() {
+//        return "ID: " + contacts_id + " | parent_id: " + parent_id + " | date_of_creating: " + new SimpleDateFormat("dd-MM-yyyy").format(dateOfCreating) + " | job: " +
+//                job + " | home_address: " + homeAddress + " | job_phone_number: " + jobPhoneNumber + " | cell_phone_number: " + cellphoneNumber;
+//    }
 
-    public long getContacts_id() {
+    public Long getContacts_id() {
         return contacts_id;
     }
 
