@@ -1,8 +1,46 @@
 <div id="profile-title-row" class="row ">
-    <div id="profile-div" class="col-xs-4 col-sm-2 col-md-1">
-        <h2 class="pink-font">Profile</h2>
+    <div id="profile-div" class="col-xs-6 col-sm-4 col-md-4 col-lg-2">
+        <h2 class="pink-font">Edit profile</h2>
     </div>
-    <div id="link-div" class="col-xs-4 col-sm-2 col-md-1 ">
+    <div id="link-div" class="col-xs-4 col-sm-2 col-md-3 ">
         <a id="edit-link" routerLink="/main/profile/"> (Back)</a>
     </div>
 </div>
+<form #editProfile="ngForm">
+    <div class="field-set">
+        <div class="row ">
+            <div class="col-xs-8 col-md-2 profile-column">
+                <input class="form-input form-control profile-input" id="txt-input" type="text" placeholder="Name*"  name="name" [(ngModel)] = "person.name" required>
+            </div>
+            <div class="col-xs-8 col-md-2 profile-column">
+                <input class="form-input form-control profile-input" type="text" placeholder="Middle name"  name="middle_name" [(ngModel)] = "person.middle_name"  >
+            </div>
+            <div class="col-xs-8 col-md-2 profile-column">
+                <input class="form-input form-control profile-input" type="text" placeholder="Surname*"  name="surname" [(ngModel)] = "person.surname" required>
+            </div>
+        </div>
+
+        <div class="row" >
+            <div class="col-xs-8 col-md-2 profile-column">
+                <input type="radio" class="gender-radio " [(ngModel)] = "person.gender" name = "gender" value="male" >Male
+                <input type="radio" class="gender-radio" [(ngModel)] = "person.gender" name = "gender" value="female" >Female<br>
+            </div>
+        </div>
+
+        <div class="row" >
+            <div class="col-xs-8 col-md-2 profile-column">
+                <label class="input-label pink-font" for="date_of_birth">Date of birth*</label><br>
+                <input class="form-input form-control profile-input" type="date"  id="date_of_birth"  name="date_of_birth" [(ngModel)] = "person.date_of_birth" required>
+            </div>
+        </div>
+
+        <div id="contacts-title-row" class="row ">
+            <div id="contacts-div" class="col-xs-6 col-sm-4 col-md-4 col-lg-2 profile-column">
+                <h2 class="pink-font">Contacts</h2>
+            </div>
+
+        </div>
+
+    </div>
+</form>
+
