@@ -31,7 +31,7 @@ export class ProfileEditComponent {
     username : string = sessionStorage.getItem("username");
     person : Person = new Person;
     contacts : Contacts = new Contacts;
-    gender : string;
+    //gender : string;
 
     date: Date;
 
@@ -39,21 +39,30 @@ export class ProfileEditComponent {
 
     ngOnInit(){
 
-        // //getting personal data
-        // this.profileService.getPerson(this.username)
-        //     .subscribe((person : Person) => {
-        //         this.person = person;
-        //         this.gender = this.person.sex ? "Male" : "Female";
-        //     });
+        //getting personal data
+        this.profileService.getPerson(this.username)
+            .subscribe((person : Person) => {
+                this.person = person;
+
+                //this.gender = this.person.sex ? "Male" : "Female";
+            });
         //
         //
-        // //getting parent contacts
-        // this.profileService.getContacts(this.username)
-        //     .subscribe((contacts : Contacts) => {
-        //         this.contacts = contacts;
-        //     })
+        //getting parent contacts
+        this.profileService.getContacts(this.username)
+            .subscribe((contacts : Contacts) => {
+                this.contacts = contacts;
+            })
     }
 
+    submit(){
+        alert("form submitted");
+        //post person data
+        this.profileService.updatePerson(this.username, this.person);
+
+        //post contacts data
+        this.profileService.postContacts(this.username, this.contacts);
+    }
 
 
 }

@@ -10,7 +10,7 @@ export class ProfileService {
     constructor(private http: HttpClient) {}
 
     /**
-     * Allows to get person data by its username
+     * Allows to get person data by username
      * @param {string} username
      * @returns {Observable<Person>}
      */
@@ -25,6 +25,11 @@ export class ProfileService {
         return this.http.post('./profile/get_person', body, httpOptions).map((resp : Person) => {return resp});
     }
 
+    /**
+     * Allows to get parent's contacts by username
+     * @param {string} username
+     * @returns {Observable<Contacts>}
+     */
     getContacts(username : string) : Observable<Contacts>{
         const httpOptions = {
             headers: new HttpHeaders({
@@ -35,4 +40,38 @@ export class ProfileService {
 
         return this.http.post('./profile/get_contacts', body, httpOptions).map((resp : Contacts) => {return resp});
     }
+
+    updatePerson(username: string, person : Person){
+        const httpOptions = {
+            headers: new HttpHeaders({
+                'Content-Type':  'application/json',
+            })
+        };
+        const body = JSON.stringify({username: username,
+                                            name: person.name,
+                                            middleName: person.middleName,
+                                            surname: person.surname,
+                                            sex: person.sex,
+                                            dateOfBirth: person.dateOfBirth});
+
+        this.http.post('./profile/update_person', body, httpOptions);
+    }
+
+    postContacts(username: string, contacts: Contacts){
+
+        const httpOptions = {
+            headers: new HttpHeaders({
+                'Content-Type':  'application/json',
+            })
+        };
+        const body = JSON.stringify({username: username,
+                                            homeAddress: contacts.homeAddress,
+                                            job: contacts.job,
+                                            jobPhoneNumber: contacts.jobPhoneNumber,
+                                            cellphoneNumber: contacts.cellphoneNumber});
+
+        this.http.post('./profile/post_contacts', body, httpOptions);
+
+    }
+
 }

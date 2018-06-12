@@ -10,10 +10,10 @@
     <div class="field-set">
         <div class="row ">
             <div class="col-xs-10 col-md-2 profile-column">
-                <input class="form-input form-control profile-input" id="txt-input" type="text" placeholder="Name*"  name="name" [(ngModel)] = "person.name" required>
+                <input class="form-input form-control profile-input" id="txt-input" type="text" placeholder="Name*"  name="name" [(ngModel)] = "person.name"  required>
             </div>
             <div class="col-xs-10 col-md-2 profile-column">
-                <input class="form-input form-control profile-input" type="text" placeholder="Middle name"  name="middle_name" [(ngModel)] = "person.middle_name"  >
+                <input class="form-input form-control profile-input" type="text" placeholder="Middle name"  name="middle_name" [(ngModel)] = "person.middleName"  >
             </div>
             <div class="col-xs-10 col-md-2 profile-column">
                 <input class="form-input form-control profile-input" type="text" placeholder="Surname*"  name="surname" [(ngModel)] = "person.surname" required>
@@ -22,8 +22,8 @@
 
         <div class="row" >
             <div class="col-xs-10 col-md-2 profile-column">
-                <input type="radio" class="gender-radio " [(ngModel)] = "person.gender" name = "gender" value="male" >Male
-                <input type="radio" class="gender-radio" [(ngModel)] = "person.gender" name = "gender" value="female" >Female<br>
+                <input type="radio" class="gender-radio " [(ngModel)] = "person.sex" name = "sex" [value]="true" >Male
+                <input type="radio" class="gender-radio" [(ngModel)] = "person.sex" name = "sex" [value]="false" >Female<br>
             </div>
         </div>
 
@@ -46,7 +46,7 @@
                 <label class="input-label pink-font" for="home_address">Home address</label><br>
             </div>
             <div class="col-xs-10 col-md-2 profile-column">
-                <input class="form-input form-control profile-input" id="home_address" type="text"  name="homeAddress">
+                <input class="form-input form-control profile-input" id="home_address" type="text" [(ngModel)] = "contacts.homeAddress" name="homeAddress">
             </div>
         </div>
 
@@ -55,7 +55,7 @@
                 <label class="input-label pink-font" for="job">Job</label><br>
             </div>
             <div class="col-xs-10 col-md-2 profile-column">
-                <input class="form-input form-control profile-input" id="job" type="text"  name="job">
+                <input class="form-input form-control profile-input" id="job" type="text" [(ngModel)] = "contacts.job" name="job">
             </div>
         </div>
 
@@ -64,7 +64,7 @@
                 <label class="input-label pink-font" for="job_phone_number">Job phone number</label><br>
             </div>
             <div class="col-xs-10 col-md-2 profile-column">
-                <input class="form-input form-control profile-input" id="job_phone_number" type="text"  name="jobPhoneNumber">
+                <input class="form-input form-control profile-input" id="job_phone_number" type="text" [(ngModel)] = "contacts.jobPhoneNumber" name="jobPhoneNumber">
             </div>
         </div>
 
@@ -73,13 +73,13 @@
                 <label class="input-label pink-font" for="cellphone_number">Cellphone number</label><br>
             </div>
             <div class="col-xs-10 col-md-2 profile-column">
-                <input class="form-input form-control profile-input" id="cellphone_number" type="text"  name="cellphoneNumber">
+                <input class="form-input form-control profile-input" id="cellphone_number" type="text" [(ngModel)] = "contacts.cellphoneNumber" name="cellphoneNumber">
             </div>
         </div>
 
         <div class="row" >
             <div class="col-xs-10 col-md-2 profile-column">
-                <button type="button"  class="btn btn-light" > Save <i class="far fa-check-circle" aria-hidden="true"></i></button>
+                <button type="button"  class="btn btn-light" (click)="submit();"> Save <i class="far fa-check-circle" aria-hidden="true"></i></button>
             </div>
         </div>
     </div>
