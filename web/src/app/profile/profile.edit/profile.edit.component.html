@@ -9,27 +9,29 @@
 <form #editProfile="ngForm">
     <div class="field-set">
         <div class="row ">
-            <div class="col-xs-8 col-md-2 profile-column">
+            <div class="col-xs-10 col-md-2 profile-column">
                 <input class="form-input form-control profile-input" id="txt-input" type="text" placeholder="Name*"  name="name" [(ngModel)] = "person.name" required>
             </div>
-            <div class="col-xs-8 col-md-2 profile-column">
+            <div class="col-xs-10 col-md-2 profile-column">
                 <input class="form-input form-control profile-input" type="text" placeholder="Middle name"  name="middle_name" [(ngModel)] = "person.middle_name"  >
             </div>
-            <div class="col-xs-8 col-md-2 profile-column">
+            <div class="col-xs-10 col-md-2 profile-column">
                 <input class="form-input form-control profile-input" type="text" placeholder="Surname*"  name="surname" [(ngModel)] = "person.surname" required>
             </div>
         </div>
 
         <div class="row" >
-            <div class="col-xs-8 col-md-2 profile-column">
+            <div class="col-xs-10 col-md-2 profile-column">
                 <input type="radio" class="gender-radio " [(ngModel)] = "person.gender" name = "gender" value="male" >Male
                 <input type="radio" class="gender-radio" [(ngModel)] = "person.gender" name = "gender" value="female" >Female<br>
             </div>
         </div>
 
         <div class="row" >
-            <div class="col-xs-8 col-md-2 profile-column">
+            <div class="col-xs-10 col-md-2 profile-column">
                 <label class="input-label pink-font" for="date_of_birth">Date of birth*</label><br>
+            </div>
+            <div class="col-xs-10 col-md-2 profile-column">
                 <input class="form-input form-control profile-input" type="date"  id="date_of_birth"  name="date_of_birth" [(ngModel)] = "person.date_of_birth" required>
             </div>
         </div>
@@ -38,9 +40,48 @@
             <div id="contacts-div" class="col-xs-6 col-sm-4 col-md-4 col-lg-2 profile-column">
                 <h2 class="pink-font">Contacts</h2>
             </div>
-
+        </div>
+        <div class="row" >
+            <div class="col-xs-10 col-md-2 profile-column">
+                <label class="input-label pink-font" for="home_address">Home address</label><br>
+            </div>
+            <div class="col-xs-10 col-md-2 profile-column">
+                <input class="form-input form-control profile-input" id="home_address" type="text"  name="homeAddress">
+            </div>
         </div>
 
+        <div class="row" >
+            <div class="col-xs-10 col-md-2 profile-column">
+                <label class="input-label pink-font" for="job">Job</label><br>
+            </div>
+            <div class="col-xs-10 col-md-2 profile-column">
+                <input class="form-input form-control profile-input" id="job" type="text"  name="job">
+            </div>
+        </div>
+
+        <div class="row" >
+            <div class="col-xs-10 col-md-2 profile-column">
+                <label class="input-label pink-font" for="job_phone_number">Job phone number</label><br>
+            </div>
+            <div class="col-xs-10 col-md-2 profile-column">
+                <input class="form-input form-control profile-input" id="job_phone_number" type="text"  name="jobPhoneNumber">
+            </div>
+        </div>
+
+        <div class="row" >
+            <div class="col-xs-10 col-md-2 profile-column">
+                <label class="input-label pink-font" for="cellphone_number">Cellphone number</label><br>
+            </div>
+            <div class="col-xs-10 col-md-2 profile-column">
+                <input class="form-input form-control profile-input" id="cellphone_number" type="text"  name="cellphoneNumber">
+            </div>
+        </div>
+
+        <div class="row" >
+            <div class="col-xs-10 col-md-2 profile-column">
+                <button type="button"  class="btn btn-light" > Save <i class="far fa-check-circle" aria-hidden="true"></i></button>
+            </div>
+        </div>
     </div>
 </form>
 
