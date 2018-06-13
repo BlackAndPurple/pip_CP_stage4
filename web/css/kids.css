@@ -8,7 +8,10 @@
     padding: 1%;
     margin: 10pt;
 }
-
+.kid-card:hover{
+    background-color: #C1E6CF;
+    border:1px solid white;
+}
 /*pineapple*/
 
 body {

@@ -30,4 +30,8 @@ export class KidsComponent {
                 //alert(this.kidCards[0].name);
             })
     }
+
+    goToKidProfile(kidCard : KidCard){
+        alert("To kid: " + kidCard.name);
+    }
 }

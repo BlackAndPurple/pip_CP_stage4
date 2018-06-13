@@ -5,7 +5,7 @@
 </div>
 
 <div class="row">
-    <div class="col-xs-10 col-md-2 profile-column kid-card" *ngFor="let kidCard of kidCards" align="center">
+    <div class="col-xs-10 col-md-2  kid-card " *ngFor="let kidCard of kidCards" align="center" (click)="goToKidProfile(kidCard);">
         <div class="pineapple">
             <div class="leaf middle"></div>
             <div class="leaf left"></div>
