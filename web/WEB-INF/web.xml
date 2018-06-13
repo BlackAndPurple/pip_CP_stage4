@@ -34,6 +34,16 @@
         <url-pattern>/profile/*</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>kids controller</servlet-name>
+        <servlet-class>controllers.KidsController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>kids controller</servlet-name>
+        <url-pattern>/kids/*</url-pattern>
+    </servlet-mapping>
+
     <!--beans-->
     <ejb-local-ref>
         <ejb-ref-name>peopleBean</ejb-ref-name>
@@ -53,6 +63,11 @@
     <ejb-local-ref>
         <ejb-ref-name>contactsBean</ejb-ref-name>
         <local>beans.IContactsBean</local>
+    </ejb-local-ref>
+
+    <ejb-local-ref>
+        <ejb-ref-name>kidBean</ejb-ref-name>
+        <local>beans.IKidBean</local>
     </ejb-local-ref>
     <!--servlet>
         <servlet-name>index jsp</servlet-name>

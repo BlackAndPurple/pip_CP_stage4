@@ -26,6 +26,11 @@ public class SessionContactsBean implements IContactsBean{
     @PersistenceUnit(unitName = "PU")
     private EntityManagerFactory emf = Persistence.createEntityManagerFactory("PU");
 
+    /**
+     * Allows to get latest contacts record of the parent with given Id.
+     * @param parentId
+     * @return          Latest contacts record.
+     */
     public ParentContacts getLatest(Long parentId){
         EntityManager em = emf.createEntityManager();
         List<ParentContacts> allContacts;

@@ -220,3 +220,17 @@ a{
     }
 }
 
+
+#profile-card{
+    background-color: white;
+    padding: 10%;
+    padding-top: 6% ;
+    font-size: 18px;
+    /*width: 70%;*/
+    border-radius: 25px;
+}
+
+
+.pink-font{
+    color: #F23063;
+}

@@ -1,1 +1,28 @@
-kids
+<div id="profile-title-row" class="row ">
+    <div id="profile-div" class="col-xs-6 col-sm-4 col-md-4 col-lg-2">
+        <h2 class="pink-font">My kids</h2>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-10 col-md-2 profile-column kid-card" *ngFor="let kidCard of kidCards" align="center">
+        <div class="pineapple">
+            <div class="leaf middle"></div>
+            <div class="leaf left"></div>
+            <div class="leaf right"></div>
+            <div class="shadow"></div>
+            <div class="body">
+                <div class="eye left"></div>
+                <div class="eye right"></div>
+                <div class="mouth"></div>
+                <div class="arm left"></div>
+                <div class="arm right"></div>
+                <div class="leg left"></div>
+                <div class="leg right"></div>
+            </div>
+        </div>
+        {{kidCard.name}}
+        {{kidCard.middleName}}
+        {{kidCard.surname}}
+    </div>
+</div>
