@@ -8,4 +8,5 @@ import java.util.List;
 @Local(SessionKidBean.class)
 public interface IKidBean {
    List<Kid> getKidsByParentId(Long parentId);
+   Kid get(long id);
 }

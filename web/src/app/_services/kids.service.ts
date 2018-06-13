@@ -26,5 +26,21 @@ export class KidsService {
 
     }
 
+    /**
+     * Allows to get kid's personal data like name and etc.
+     * @param {number} kidId            kid's id
+     * @returns {Observable<Person>}
+     */
+    getKidPersonality(kidId : number) : Observable<Person>{
+        const httpOptions = {
+            headers: new HttpHeaders({
+                'Content-Type':  'application/json',
+            })
+        };
+        const body = JSON.stringify({kidId: kidId});
+
+        return this.http.post('./kids/get_kid_person', body, httpOptions).map((resp : Person) => {return resp});
+    }
+
 
 }

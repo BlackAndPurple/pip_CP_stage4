@@ -70,6 +70,14 @@ public class KidsController extends HttpServlet implements JsonToStringAndDateCo
                 mapper = new ObjectMapper();
                 result = mapper.writeValueAsString(kidCards);
                 break;
+            case "get_kid_person":
+                jsonObject = new JSONObject(getJsonString(request).toString());
+                Long kidId = jsonObject.getLong("kidId");
+                Kid kid = kidBean.get(kidId);
+                person = peopleBean.get(kid.getPerson().getPerson_id());
+                mapper = new ObjectMapper();
+                result = mapper.writeValueAsString(person);
+                break;
         }
         }catch(JSONException e){
             throw new IOException("Error parsing JSON request string");

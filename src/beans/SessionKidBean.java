@@ -33,4 +33,18 @@ public class SessionKidBean implements IKidBean{
     }
 
 
+    /**
+     * Allows to get kid by id.
+     * @param id  the identifier of kid we are looking for.
+     * @return    Kid with given id if found.
+     */
+    public Kid get(long id){
+        EntityManager em = emf.createEntityManager();
+        try {
+            return (Kid)em.createQuery("select kid from Kid kid where kid.kid_id="+id).getSingleResult();
+        }catch (Exception e){
+            em.close();
+            return null;
+        }
+    }
 }
