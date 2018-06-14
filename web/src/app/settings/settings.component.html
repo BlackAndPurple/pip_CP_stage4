@@ -1,1 +1,27 @@
-settings
+<div class="row">
+    <h2 class="pink-font">Settings</h2>
+</div>
+
+<form #editEmail="ngForm">
+    <div class="field-set">
+
+        <div class="row" >
+            <div class="pink-border col-xs-11 col-md-5">
+                <div class="col-xs-10 col-md-4 profile-column">
+                    <label class="input-label pink-font" for="email">Edit email</label><br>
+                </div>
+                <div class="col-xs-11 col-md-8 profile-column" align="right">
+                    <input class="form-input form-control profile-input" type="email"  id="email"  name="email" [(ngModel)] = "email" required>
+                    <button type="button"  class="btn btn-light float-right" (click)="saveEmail();"> Save <i class="far fa-check-circle" aria-hidden="true"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <!--<div class="row float-right" >-->
+            <!--<div class="col-xs-10 col-md-2 profile-column">-->
+                <!--<button type="button"  class="btn btn-light" (click)="saveEmail();"> Save <i class="far fa-check-circle" aria-hidden="true"></i></button>-->
+            <!--</div>-->
+        <!--</div>-->
+
+    </div>
+</form>

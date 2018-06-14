@@ -5,9 +5,14 @@ import {Component} from "@angular/core";
     selector: 'settings',
 
     templateUrl: './settings.component.html',
-    styleUrls: ['../../../css/login.css'],
+    styleUrls: ['../../../css/settings.css'],
     //providers: [AuthenticationService]
 })
 export class SettingsComponent {
 
+    email : string;
+
+    saveEmail(){
+
+    }
 }

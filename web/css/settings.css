@@ -1,0 +1,14 @@
+.pink-font{
+    color: #F23063;
+}
+
+#email{
+    margin-bottom: 3%;
+}
+
+.pink-border{
+    border-radius: 25px;
+    border:1px solid #F23063;
+    padding: 1%;
+    margin: 10pt;
+}
