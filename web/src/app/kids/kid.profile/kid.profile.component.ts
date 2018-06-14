@@ -13,6 +13,14 @@ export class GroupCard{
     since: string;
     till: string;
 }
+
+export class Med{
+    dateOfCreating: string;
+    height: number;
+    weight: number;
+    inoculations: string;
+    currentDiseases: string;
+}
 @Component({
     selector: 'kid-profile',
 
@@ -28,6 +36,7 @@ export class KidProfileComponent {
     kidPerson : Person;
     gender : string;
     groupCards: GroupCard[];
+    med: Med;
 
     constructor(private kidsService: KidsService, private activateRoute: ActivatedRoute) {
         this.subscription = activateRoute.params.subscribe(params=>this.kidId = params['kidId']);
@@ -45,7 +54,13 @@ export class KidProfileComponent {
             .subscribe((value : GroupCard[]) =>
             {
                 this.groupCards = value;
-            })
+            });
+
+        this.kidsService.getLatestMed(this.kidId)
+            .subscribe((value : Med) =>
+            {
+                this.med = value;
+            });
     }
 
 

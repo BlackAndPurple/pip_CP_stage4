@@ -3,7 +3,7 @@ import {Injectable} from "@angular/core";
 import {Observable} from "rxjs/Observable";
 import {KidCard} from "../kids/kids.component";
 import {Person} from "../profile/profile.show/profile.show.component";
-import {GroupCard} from "../kids/kid.profile/kid.profile.component";
+import {GroupCard, Med} from "../kids/kid.profile/kid.profile.component";
 
 @Injectable()
 export class KidsService {
@@ -43,6 +43,11 @@ export class KidsService {
         return this.http.post('./kids/get_kid_person', body, httpOptions).map((resp : Person) => {return resp});
     }
 
+    /**
+     * Allows to get kid's group information by kid's id
+     * @param {number} kidId
+     * @returns {Observable<GroupCard[]>}
+     */
     getGroupCards(kidId: number) : Observable<GroupCard[]>{
         const httpOptions = {
             headers: new HttpHeaders({
@@ -54,5 +59,21 @@ export class KidsService {
         return this.http.post('./kids/get_group_cards', body, httpOptions).map((resp : GroupCard[]) => {return resp});
     }
 
+    /**
+     * Allows to get kid's latest medical information
+     * @param {number} kidId
+     * @returns {Observable<Med>}
+     */
+    getLatestMed(kidId: number) : Observable<Med>{
+
+        const httpOptions = {
+            headers: new HttpHeaders({
+                'Content-Type':  'application/json',
+            })
+        };
+        const body = JSON.stringify({kidId: kidId});
+
+        return this.http.post('./kids/get_latest_med', body, httpOptions).map((resp : Med) => {return resp});
+    }
 
 }

@@ -1,5 +1,6 @@
 package models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.internal.Nullable;
 
 import javax.persistence.*;
@@ -12,8 +13,9 @@ public class MedInfo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long med_id;
+    private Long med_id;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name="KID_ID",/*, referencedColumnName = "KID_id", */insertable = false, updatable = false)
     private Kid kid;
@@ -21,8 +23,10 @@ public class MedInfo {
     @Column(name = "kid_id")
     private Long kid_id;
 
+
+    @Column(name="date_of_creating")
     @Temporal(TemporalType.DATE)
-    private Date date_of_creating;
+    private Date dateOfCreating;
 
     private Integer height;
     private Double weight;
@@ -32,11 +36,7 @@ public class MedInfo {
     @Column(name = "CURRENT_DISEASES")
     private String currentDiseases;
 
-    @Override
-    public String toString() {
-        return "ID: " + med_id + " | kid id:" + kid_id +" | date of creating: " + new SimpleDateFormat("dd-MM-yyyy").format(date_of_creating)+
-                " | height: " + height + " | weight: " + weight + " | inoculations: " + inoculations+ " | current diseases: " + currentDiseases;
-    }
+
 
     public long getMed_id() {
         return med_id;
@@ -55,12 +55,12 @@ public class MedInfo {
         kid_id = kid.getKid_id();
     }
 
-    public Date getDate_of_creating() {
-        return date_of_creating;
+    public Date getDateOfCreating() {
+        return dateOfCreating;
     }
 
-    public void setDate_of_creating(Date date_of_creating) {
-        this.date_of_creating = date_of_creating;
+    public void setDateOfCreating(Date date_of_creating) {
+        this.dateOfCreating = date_of_creating;
     }
 
     public Integer getHeight() {
@@ -87,11 +87,11 @@ public class MedInfo {
         this.inoculations = inoculations;
     }
 
-    public String getCurrentDeseases() {
+    public String getCurrentDiseases() {
         return currentDiseases;
     }
 
-    public void setCurrentDeseases(String currentDeseases) {
+    public void setCurrentDiseases(String currentDeseases) {
         this.currentDiseases = currentDeseases;
     }
 }

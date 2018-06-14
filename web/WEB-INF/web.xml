@@ -74,6 +74,11 @@
         <ejb-ref-name>accountBean</ejb-ref-name>
         <local>beans.IAccountBean</local>
     </ejb-local-ref>
+
+    <ejb-local-ref>
+        <ejb-ref-name>medBean</ejb-ref-name>
+        <local>beans.IMedBean</local>
+    </ejb-local-ref>
     <!--servlet>
         <servlet-name>index jsp</servlet-name>
         <jsp-file>/index.jsp</jsp-file>

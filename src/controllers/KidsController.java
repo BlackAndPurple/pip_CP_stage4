@@ -39,6 +39,9 @@ public class KidsController extends HttpServlet implements JsonToStringAndDateCo
     @EJB
     IAccountBean accountBean;
 
+    @EJB
+    IMedBean medBean;
+
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String path = request.getRequestURI().substring(request.getContextPath().length());
@@ -74,7 +77,6 @@ public class KidsController extends HttpServlet implements JsonToStringAndDateCo
             case "get_group_cards":
                 jsonObject = new JSONObject(getJsonString(request).toString());
                 kidId = jsonObject.getLong("kidId");
-                //Kid kid = kidBean.get(kidId);
                 List<KidAccount> accounts = accountBean.get(kidId);
                 List<GroupCard> groupCards = new ArrayList<>();
 
@@ -90,6 +92,16 @@ public class KidsController extends HttpServlet implements JsonToStringAndDateCo
                 result = mapper.writeValueAsString(groupCards);
 
                 break;
+
+            case "get_latest_med":
+                jsonObject = new JSONObject(getJsonString(request).toString());
+                kidId = jsonObject.getLong("kidId");
+                MedInfo medInfo = medBean.getLatest(kidId);
+                mapper = new ObjectMapper();
+                mapper.setDateFormat(df);
+                result = mapper.writeValueAsString(medInfo);
+                break;
+
             case "get_kid_person":
                 jsonObject = new JSONObject(getJsonString(request).toString());
                 kidId = jsonObject.getLong("kidId");
