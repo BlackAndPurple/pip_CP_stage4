@@ -3,6 +3,7 @@ import {Injectable} from "@angular/core";
 import {Observable} from "rxjs/Observable";
 import {KidCard} from "../kids/kids.component";
 import {Person} from "../profile/profile.show/profile.show.component";
+import {GroupCard} from "../kids/kid.profile/kid.profile.component";
 
 @Injectable()
 export class KidsService {
@@ -40,6 +41,17 @@ export class KidsService {
         const body = JSON.stringify({kidId: kidId});
 
         return this.http.post('./kids/get_kid_person', body, httpOptions).map((resp : Person) => {return resp});
+    }
+
+    getGroupCards(kidId: number) : Observable<GroupCard[]>{
+        const httpOptions = {
+            headers: new HttpHeaders({
+                'Content-Type':  'application/json',
+            })
+        };
+        const body = JSON.stringify({kidId: kidId});
+
+        return this.http.post('./kids/get_group_cards', body, httpOptions).map((resp : GroupCard[]) => {return resp});
     }
 
 

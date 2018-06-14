@@ -1,15 +1,10 @@
 package controllers;
 
-import beans.IKidBean;
-import beans.IParentBean;
-import beans.IPeopleBean;
-import beans.IUserBean;
+import beans.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import dataPass.GroupCard;
 import dataPass.KidCard;
-import models.Kid;
-import models.Parent;
-import models.People;
-import models.User;
+import models.*;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -21,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -40,6 +36,9 @@ public class KidsController extends HttpServlet implements JsonToStringAndDateCo
     @EJB
     IKidBean kidBean;
 
+    @EJB
+    IAccountBean accountBean;
+
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String path = request.getRequestURI().substring(request.getContextPath().length());
@@ -50,6 +49,8 @@ public class KidsController extends HttpServlet implements JsonToStringAndDateCo
         String username;
         People person;
         ObjectMapper mapper;
+        Long kidId;
+        SimpleDateFormat df = new SimpleDateFormat("dd.MM.yyyy"); //date format
 
         try{
         switch (pathArr[2]) {
@@ -70,12 +71,32 @@ public class KidsController extends HttpServlet implements JsonToStringAndDateCo
                 mapper = new ObjectMapper();
                 result = mapper.writeValueAsString(kidCards);
                 break;
+            case "get_group_cards":
+                jsonObject = new JSONObject(getJsonString(request).toString());
+                kidId = jsonObject.getLong("kidId");
+                //Kid kid = kidBean.get(kidId);
+                List<KidAccount> accounts = accountBean.get(kidId);
+                List<GroupCard> groupCards = new ArrayList<>();
+
+                for(KidAccount account : accounts){
+                    groupCards.add(new GroupCard(account.getGroup().getName(),
+                                                account.getGroup().getTypeOfGroup(),
+                                                account.getDate_of_creating(),
+                                                account.getDate_of_leaving()));
+                }
+
+                mapper = new ObjectMapper();
+                mapper.setDateFormat(df);
+                result = mapper.writeValueAsString(groupCards);
+
+                break;
             case "get_kid_person":
                 jsonObject = new JSONObject(getJsonString(request).toString());
-                Long kidId = jsonObject.getLong("kidId");
+                kidId = jsonObject.getLong("kidId");
                 Kid kid = kidBean.get(kidId);
                 person = peopleBean.get(kid.getPerson().getPerson_id());
                 mapper = new ObjectMapper();
+                mapper.setDateFormat(df);
                 result = mapper.writeValueAsString(person);
                 break;
         }

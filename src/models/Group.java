@@ -11,7 +11,7 @@ public class Group {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY/*, generator = "IdSeq3"*/)
     //@SequenceGenerator(name="IdSeq3",sequenceName="group_ids", allocationSize=1)
-    private long group_id;
+    private Long group_id;
 
 
     @Column(columnDefinition = "VARCHAR(20)")
@@ -27,16 +27,13 @@ public class Group {
     @OneToMany(targetEntity = StaffGroup.class, mappedBy = "group")
     private Collection<StaffGroup> staffGroup;
 
-    @Override
-    public String toString() {
-        return "group ID: " + group_id + " | name: " + name + " | type: " + typeOfGroup;
-    }
 
-    public long getGroup_id() {
+
+    public Long getGroup_id() {
         return group_id;
     }
 
-    public void setGroup_id(long group_id) {
+    public void setGroup_id(Long group_id) {
         this.group_id = group_id;
     }
 

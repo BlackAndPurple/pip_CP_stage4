@@ -20,6 +20,8 @@ import {ProfileShowComponent} from "./profile/profile.show/profile.show.componen
 import {ProfileEditComponent} from "./profile/profile.edit/profile.edit.component";
 import {KidProfileComponent} from "./kids/kid.profile/kid.profile.component";
 
+import {MatExpansionModule} from '@angular/material/expansion';
+
 //определение маршрутов
 
 const profileRoutes : Routes = [
@@ -60,7 +62,8 @@ const loginRoutes : Routes = [
 
 @NgModule({
     imports:      [ BrowserModule, FormsModule, HttpClientModule, RouterModule.forRoot(appRoutes),
-                    RouterModule.forRoot(loginRoutes), BrowserAnimationsModule, NgbModule.forRoot()/*, RouterModule.forRoot(registerRoutes) */ ],
+                    RouterModule.forRoot(loginRoutes), BrowserAnimationsModule, NgbModule.forRoot(),
+                    /*, RouterModule.forRoot(registerRoutes) */ ],
     declarations: [ AppComponent, RegisterComponent, SignInComponent, Step1Component, Step2Component,
                     MainComponent, ProfileComponent, KidsComponent, SettingsComponent, ProfileShowComponent,
                     ProfileEditComponent, KidProfileComponent  ],
