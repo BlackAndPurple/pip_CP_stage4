@@ -33,6 +33,32 @@ export class SettingsComponent {
     }
 
     changePassword(){
-
+        this.settingsService.checkPasswordMatch(this.username, this.oldPassword)
+            .subscribe((value : boolean) => {
+                if (value == false)
+                    alert("Old password is incorrect!");
+                else{
+                    this.settingsService.postNewPassword(this.username, this.newPassword)
+                        .subscribe((value : boolean) => {
+                            if (value == true)
+                                alert("Password have been successfully changed!");
+                         })
+                }
+            })
     }
 }
+
+// saveEmail(){
+//     this.settingsService.sendEmail(this.username, this.user.email)
+//         .subscribe((value : boolean) => {
+//             if (value == false)
+//                 alert("Old password is incorrect!");
+//             else{
+//                 this.settingsService.postNewPassword(this.username, this.newPassword)
+//                     .subscribe((value : boolean) => {
+//                         if (value == true)
+//                             alert("Password have been successfully changed!");
+//                     })
+//             }
+//         })
+// }

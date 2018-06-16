@@ -31,6 +31,7 @@ export class SettingsService {
 
     /**
      * Allows to post changed email.
+     * @param username
      * @param {string} email            Changed email.
      * @returns {Observable<boolean>}   True if saving to db was successful.
      */
@@ -45,6 +46,38 @@ export class SettingsService {
         return this.http.post('./settings/post_email', body, httpOptions).map((resp : boolean) => {return resp});
     }
 
+    /**
+     * Allows to check if old password is correct
+     * @param {string} username         user's username
+     * @param {string} oldPassword      Old password to check
+     * @returns {Observable<boolean>}
+     */
+    checkPasswordMatch(username: string, oldPassword : string) : Observable<boolean>{
+        const httpOptions = {
+            headers: new HttpHeaders({
+                'Content-Type':  'application/json',
+            })
+        };
+        const body = JSON.stringify({username: username, password: oldPassword});
 
+        return this.http.post('./settings/check_password', body, httpOptions).map((resp : boolean) => {return resp});
+    }
 
+    /**
+     * Allows to post new password to update user's password
+     * @param {string} username
+     * @param {string} newPassword
+     * @returns {Observable<boolean>}
+     */
+    postNewPassword(username: string, newPassword : string) : Observable<boolean>{
+
+        const httpOptions = {
+            headers: new HttpHeaders({
+                'Content-Type':  'application/json',
+            })
+        };
+        const body = JSON.stringify({username: username, password: newPassword});
+
+        return this.http.post('./settings/post_password', body, httpOptions).map((resp : boolean) => {return resp});
+    }
 }

@@ -30,6 +30,7 @@ public class SettingsController extends HttpServlet implements JsonToStringAndDa
         User user;
         String username;
         ObjectMapper mapper;
+        String password;
         try{
 
             switch (pathArr[2]) {
@@ -48,6 +49,23 @@ public class SettingsController extends HttpServlet implements JsonToStringAndDa
                     username = jsonObject.getString("username");
                     user = userBean.get(username);
                     user.setEmail(email);
+                    result = String.valueOf(userBean.update(user));
+                    break;
+
+                case "check_password":
+                    jsonObject = new JSONObject(getJsonString(request).toString());
+                    password = jsonObject.getString("password");
+                    username = jsonObject.getString("username");
+                    user = userBean.get(username);
+                    result = String.valueOf(user.getPassword() == password.hashCode());
+                    break;
+
+                case "post_password":
+                    jsonObject = new JSONObject(getJsonString(request).toString());
+                    password = jsonObject.getString("password");
+                    username = jsonObject.getString("username");
+                    user = userBean.get(username);
+                    user.setPassword(password.hashCode());
                     result = String.valueOf(userBean.update(user));
                     break;
             }
