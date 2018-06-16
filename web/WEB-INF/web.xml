@@ -44,6 +44,16 @@
         <url-pattern>/kids/*</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>settings controller</servlet-name>
+        <servlet-class>controllers.SettingsController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>settings controller</servlet-name>
+        <url-pattern>/settings/*</url-pattern>
+    </servlet-mapping>
+
     <!--beans-->
     <ejb-local-ref>
         <ejb-ref-name>peopleBean</ejb-ref-name>

@@ -10,18 +10,33 @@
                 <div class="col-xs-10 col-md-4 profile-column">
                     <label class="input-label pink-font" for="email">Edit email</label><br>
                 </div>
-                <div class="col-xs-11 col-md-8 profile-column" align="right">
-                    <input class="form-input form-control profile-input" type="email"  id="email"  name="email" [(ngModel)] = "email" required>
-                    <button type="button"  class="btn btn-light float-right" (click)="saveEmail();"> Save <i class="far fa-check-circle" aria-hidden="true"></i></button>
+                <div class="col-xs-12 col-md-8 profile-column" align="right">
+                    <input class="form-input form-control settings-input" type="email"  id="email"  name="email" [ngModel] = "user?.email" (ngModelChange)="user.email=$event" required>
+                    <button type="button"  [disabled]="editEmail.invalid" class="btn btn-light float-right" (click)="saveEmail();"> Save <i class="far fa-check-circle" aria-hidden="true"></i></button>
                 </div>
             </div>
         </div>
 
-        <!--<div class="row float-right" >-->
-            <!--<div class="col-xs-10 col-md-2 profile-column">-->
-                <!--<button type="button"  class="btn btn-light" (click)="saveEmail();"> Save <i class="far fa-check-circle" aria-hidden="true"></i></button>-->
-            <!--</div>-->
-        <!--</div>-->
+
+    </div>
+</form>
+
+<form #editPassword="ngForm">
+    <div class="field-set">
+
+        <div class="row" >
+            <div class="pink-border col-xs-11 col-md-5">
+                <div class="col-xs-10 col-md-4 profile-column">
+                    <label class="input-label pink-font" for="old-password">Edit password</label><br>
+                </div>
+                <div class="col-xs-12 col-md-8 profile-column" align="right">
+                    <input class="form-input form-control  settings-input" type="password" placeholder="Old password"  id="old-password"  name="old-password" [(ngModel)] = "oldPassword" required>
+                    <input class="form-input form-control settings-input" type="password"  id="new-password" placeholder="New password" name="new-password" [(ngModel)] = "newPassword" required>
+                    <button type="button" [disabled]="editPassword.invalid" class="btn btn-light float-right" (click)="changePassword();"> Save <i class="far fa-check-circle" aria-hidden="true"></i></button>
+                </div>
+            </div>
+        </div>
+
 
     </div>
 </form>

@@ -1,5 +1,7 @@
 package models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -19,6 +21,7 @@ public class User {
     @Column(name = "admin")
     private boolean admin;
 
+    @JsonIgnore
     @OneToOne
     @PrimaryKeyJoinColumn(name = "person_id", referencedColumnName = "person_id")
     private People person;
