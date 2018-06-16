@@ -11,7 +11,7 @@
                     <label class="input-label pink-font" for="email">Edit email</label><br>
                 </div>
                 <div class="col-xs-12 col-md-8 profile-column" align="right">
-                    <input class="form-input form-control settings-input" type="email"  id="email"  name="email" [ngModel] = "user?.email" (ngModelChange)="user.email=$event" required>
+                    <input class="form-input form-control settings-input" type="email"  id="email"  name="email" [ngModel] = "user?.email" (ngModelChange)="user.email=$event" pattern="[^@]+@[^@]+\.[a-zA-Z]{2,6}" title="Incorrect email address." required>
                     <button type="button"  [disabled]="editEmail.invalid" class="btn btn-light float-right" (click)="saveEmail();"> Save <i class="far fa-check-circle" aria-hidden="true"></i></button>
                 </div>
             </div>

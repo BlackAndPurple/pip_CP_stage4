@@ -41,6 +41,15 @@ public class SettingsController extends HttpServlet implements JsonToStringAndDa
                     result = mapper.writeValueAsString(user);
                     //result = user.getEmail();
                     break;
+
+                case "post_email":
+                    jsonObject = new JSONObject(getJsonString(request).toString());
+                    String email = jsonObject.getString("email");
+                    username = jsonObject.getString("username");
+                    user = userBean.get(username);
+                    user.setEmail(email);
+                    result = String.valueOf(userBean.update(user));
+                    break;
             }
 
         }catch(JSONException e){

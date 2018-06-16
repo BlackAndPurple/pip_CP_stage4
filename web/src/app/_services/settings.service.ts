@@ -29,6 +29,22 @@ export class SettingsService {
 
     }
 
+    /**
+     * Allows to post changed email.
+     * @param {string} email            Changed email.
+     * @returns {Observable<boolean>}   True if saving to db was successful.
+     */
+    sendEmail(username: string, email : string) : Observable<boolean>{
+        const httpOptions = {
+            headers: new HttpHeaders({
+                'Content-Type':  'application/json',
+            })
+        };
+        const body = JSON.stringify({username: username, email: email});
+
+        return this.http.post('./settings/post_email', body, httpOptions).map((resp : boolean) => {return resp});
+    }
+
 
 
 }

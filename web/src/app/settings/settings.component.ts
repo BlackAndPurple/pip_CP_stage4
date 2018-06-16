@@ -15,7 +15,7 @@ import {User} from "../register/step2.component";
 export class SettingsComponent {
 
     constructor(private settingsService: SettingsService) {}
-    email : string;
+   // email : string;
     oldPassword : string;
     newPassword : string;
     username : string = sessionStorage.getItem("username");
@@ -28,7 +28,8 @@ export class SettingsComponent {
     }
 
     saveEmail(){
-
+        this.settingsService.sendEmail(this.username, this.user.email)
+            .subscribe((value : boolean) => {})
     }
 
     changePassword(){

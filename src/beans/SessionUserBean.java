@@ -72,4 +72,23 @@ public class SessionUserBean implements IUserBean {
         em.close();
 
     }
+
+    /**
+     * Allows to update an existing user.
+     * @param user
+     * @return      True if update was successful
+     */
+    public boolean update(User user){
+        boolean result = false;
+        EntityManager em =  emf.createEntityManager();
+        try {
+            em.merge(user);
+            result = true;
+
+        }catch (Exception e){ }
+        finally {
+            em.close();
+        }
+        return result;
+    }
 }
