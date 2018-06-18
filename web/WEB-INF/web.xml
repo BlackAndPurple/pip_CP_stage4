@@ -89,6 +89,11 @@
         <ejb-ref-name>medBean</ejb-ref-name>
         <local>beans.IMedBean</local>
     </ejb-local-ref>
+
+    <ejb-local-ref>
+        <ejb-ref-name>mailBean</ejb-ref-name>
+        <local>beans.IMailBean</local>
+    </ejb-local-ref>
     <!--servlet>
         <servlet-name>index jsp</servlet-name>
         <jsp-file>/index.jsp</jsp-file>

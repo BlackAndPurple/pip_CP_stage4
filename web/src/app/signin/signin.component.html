@@ -2,8 +2,6 @@
 <div class=" overlay">
     <form #signInForm="ngForm" novalidate>
 
-
-
         <div class="con">
             <header class="head-form">
                 <h2>Log In</h2>
@@ -12,21 +10,9 @@
             <br>
             <div class="field-set">
 
-                <!--span class="input-item">
-                    <i class="fa fa-user-circle"></i>
-                </span-->
                 <input class="form-input form-control" id="txt-input" type="text" placeholder="UserName"  name="username" [(ngModel)]="username" required>
                 <br>
-
-                <!--span class="input-item">
-                    <i class="fa fa-key"></i>
-                </span-->
                 <input class="form-input form-control" type="password" placeholder="Password" id="pwd"  name="password" [(ngModel)]="password"  required>
-
-                <!--span>
-                    <i class="fa fa-eye" aria-hidden="true"  type="button" id="eye"></i>
-                </span-->
-
 
                 <br>
                 <!--        buttons -->
@@ -37,7 +23,7 @@
             <!--   other buttons -->
             <div class="other">
                 <!--      Forgot Password button-->
-                <button class="btn submits frgt-pass">Forgot Password</button>
+                <button class="btn submits frgt-pass" (click)="forgotPassword();">Forgot Password</button>
                 <!--     Sign Up button -->
                 <button class="btn submits sign-up" (click)="signUpClick();">Sign Up
                     <!--         Sign Up font icon -->

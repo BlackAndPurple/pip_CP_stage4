@@ -14,6 +14,7 @@ import {NoAuthGuard} from "../guards/NoAuthGuard";
 export class SignInComponent {
     constructor(private authService: AuthenticationService, private router: Router){}
     result: boolean = false;
+    username : string;
     submit(form: NgForm){
 
         this.authService.login(form.value.username, form.value.password)
@@ -30,5 +31,18 @@ export class SignInComponent {
 
     signUpClick(){
         this.router.navigateByUrl('/register');
+    }
+
+    forgotPassword(){
+        // if (confirm("Are you sure you want to reset your password? "))
+        //     this.authService.resetPassword()
+        this.username = prompt("Enter your username to reset password:", null);
+        if (this.username !== null){
+            this.authService.resetPassword(this.username)
+                .subscribe((value : boolean) => {
+                    if (value)
+                        alert("Your password have been changed! Check out your email")});
+        }
+
     }
 }

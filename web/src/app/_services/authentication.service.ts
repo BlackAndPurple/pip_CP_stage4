@@ -25,4 +25,15 @@ export class AuthenticationService{
         })*/;
     }
 
+    resetPassword(username : string) : Observable < boolean> {
+        const httpOptions = {
+            headers: new HttpHeaders({
+                'Content-Type': 'application/json',
+            })
+        };
+        const body = JSON.stringify({username: username});
+        return this.http.post('./login/reset_password', body, httpOptions)
+            .map((value : boolean) => {return value});
+    }
+
 }

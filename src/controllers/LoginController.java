@@ -1,5 +1,6 @@
 package controllers;
 
+import beans.IMailBean;
 import beans.IParentBean;
 import beans.IPeopleBean;
 import beans.IUserBean;
@@ -22,6 +23,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Random;
 
 public class LoginController extends HttpServlet implements JsonToStringAndDateConverter{
 
@@ -34,29 +36,9 @@ public class LoginController extends HttpServlet implements JsonToStringAndDateC
     @EJB
     IParentBean parentBean;
 
-//    private StringBuffer getJsonString(HttpServletRequest req){
-//        StringBuffer jb = new StringBuffer();
-//        String line = null;
-//        try {
-//            BufferedReader reader = req.getReader();
-//            while ((line = reader.readLine()) != null)
-//                jb.append(line);
-//        } catch (Exception e) { return null; }
-//        return jb;
-//    }
+    @EJB
+    IMailBean mailBean;
 
-//    private Date parseDate(String stringDate){
-//        Date date = null;
-//        if ((stringDate != null) && !stringDate.equals("")) {
-//            DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-//            try {
-//                date = format.parse(stringDate);
-//            } catch (ParseException e) {
-//                e.printStackTrace();
-//            }
-//        }
-//        return date;
-//    }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -145,6 +127,31 @@ public class LoginController extends HttpServlet implements JsonToStringAndDateC
                     out.close();
                 }
                 break;
+
+            case "reset_password":
+                try{
+                    //do smth
+                    jsonObject = new JSONObject(getJsonString(req).toString());
+                    username = jsonObject.getString("username");
+                    User user = userBean.get(username);
+                    Random random = new Random();
+                    String newPassword = String.valueOf(random.nextInt(10000) + 10000);
+                    user.setPassword(newPassword.hashCode());
+                    if (userBean.update(user))
+                        result = String.valueOf(true);
+                    mailBean.send(newPassword, user.getEmail());
+
+                }catch(JSONException e){
+                    throw new IOException("Error parsing JSON request string");
+                }finally {
+                    PrintWriter out = resp.getWriter();
+                    out.print(result);
+                    out.flush();
+                    out.close();
+                }
+
+                break;
+
             case "add_user":
                 String response = String.valueOf(false);
                 try{
